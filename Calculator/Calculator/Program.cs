@@ -38,12 +38,12 @@ namespace Calculator
             
             if (result == "3")
             {
-                Division();
+                DivisionNumbers();
                 return true;
             }
             if (result == "4")
             {
-                Multiplication();
+                MultiplicationNumbers();
                 return true;
             }
             else
@@ -51,5 +51,6 @@ namespace Calculator
                 return false;
             }
         }
+        
     }
 }
