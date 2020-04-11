@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj": {}
+    "c:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj": {
+    "c:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj",
+        "projectUniqueName": "c:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj",
         "projectName": "Calculator",
-        "projectPath": "C:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj",
+        "projectPath": "c:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\Calculator.csproj",
         "packagesPath": "C:\\Users\\Anton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\obj\\",
+        "outputPath": "c:\\Users\\Anton\\Documents\\Git\\anton88st\\rep\\Calculator\\Calculator\\Calculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
