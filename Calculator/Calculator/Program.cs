@@ -6,10 +6,10 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            bool displayMenu = true;
-            while (displayMenu)
+            bool displayMemu = true;
+            while (displayMemu)
             {
-                displayMenu = MainMenu();
+                displayMemu = MainMenu();
             }
         }
         private static bool MainMenu()
@@ -34,8 +34,8 @@ namespace Calculator
             {
                 SubtractionNumbers();
                 return true;
-             }
-            
+            }
+
             if (result == "3")
             {
                 DivisionNumbers();
@@ -50,6 +50,62 @@ namespace Calculator
             {
                 return false;
             }
+        }
+        private static void AdditionNumbers()
+        {
+            Console.Clear();
+            Console.Write("Input first number: ");
+            double firstNumber = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Input second number: ");
+            double secondNumber = double.Parse(Console.ReadLine());
+
+            double result = firstNumber + secondNumber;
+
+            Console.Write("Result: ");
+            Console.WriteLine(result);
+            Console.ReadLine();
+        }
+        private static void SubtractionNumbers()
+        {
+            Console.Clear();
+            Console.Write("Input first number: ");
+            double firstNumber = double.Parse(Console.ReadLine());
+            Console.Write("Input second number: ");
+            double secondNumber = double.Parse(Console.ReadLine());
+
+            double result = firstNumber - secondNumber;
+
+            Console.Write("Result: ");
+            Console.WriteLine(result);
+            Console.ReadLine();
+        }
+        private static void DivisionNumbers()
+        {
+            Console.Clear();
+            Console.Write("Input first number: ");
+            double firstNumber = double.Parse(Console.ReadLine());
+            Console.Write("Input second number: ");
+            double secondNumber = double.Parse(Console.ReadLine());
+
+            double result = firstNumber / secondNumber;
+
+            Console.Write("Result: ");
+            Console.WriteLine(result);
+            Console.ReadLine();
+        }
+        private static void MultiplicationNumbers()
+        {
+            Console.Clear();
+            Console.Write("Input first number: ");
+            double firstNumber = double.Parse(Console.ReadLine());
+            Console.Write("Input second number: ");
+            double secondNumber = double.Parse(Console.ReadLine());
+
+            double result = firstNumber * secondNumber;
+
+            Console.Write("Result: ");
+            Console.WriteLine(result);
+            Console.ReadLine();
         }
         
     }
