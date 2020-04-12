@@ -63,6 +63,9 @@ namespace Calculator
 
             Console.Clear();
             NameApplication();
+            string nameMathOperation = "Addition numbers";
+            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameMathOperation);
 
             while (!endApp)
             {
@@ -109,6 +112,9 @@ namespace Calculator
 
             Console.Clear();
             NameApplication();
+            string nameMathOperation = "Subtraction numbers";
+            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameMathOperation);
 
             while (!endApp)
             {
@@ -155,6 +161,9 @@ namespace Calculator
            
             Console.Clear();
             NameApplication();
+            string nameMathOperation = "Division numbers";
+            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameMathOperation);
 
             while (!endApp)
             {
@@ -201,6 +210,9 @@ namespace Calculator
 
             Console.Clear();
             NameApplication();
+            string nameMathOperation = "Multiplication numbers";
+            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameMathOperation);
 
             while (!endApp)
             {
