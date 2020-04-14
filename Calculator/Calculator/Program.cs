@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculator
+namespace Matrix
 {
     class Program
     {
@@ -283,7 +283,7 @@ namespace Calculator
             }
 
         }
-        static void Main(string[] args)
+        static void MatrixMain(string[] args)
         {
             int[,] a = GetMatrix("A");
             int[,] b = GetMatrix("B");
