@@ -20,7 +20,8 @@ namespace Matrix
             Console.WriteLine("2) Substraction numbers");
             Console.WriteLine("3) Division numbers");
             Console.WriteLine("4) Multiplication numbers");
-            Console.WriteLine("5) Exit");
+            Console.WriteLine("5) Multiplication matrices");
+            Console.WriteLine("6) Exit");
             Console.Write("Your choice: ");
             string result = Console.ReadLine();
 
@@ -44,6 +45,11 @@ namespace Matrix
             if (result == "4")
             {
                 MultiplicationNumbers();
+                return true;
+            }
+            if (result == "5")
+            {
+                MatrixMain();
                 return true;
             }
             else
@@ -154,9 +160,10 @@ namespace Matrix
             bool endApp = false;
             string firstNumber = "";
             string secondNumber = "";
-            double result = 0;
+            //double result = 0;
             double dblFirstNumber = 0;
             double dblSecondNumber = 0;
+            double result = double.NaN;
 
             Console.Clear();
             NameApplication();
@@ -187,12 +194,19 @@ namespace Matrix
                     Console.Write("Type the second number: ");
                     secondNumber = Console.ReadLine();
                 }
-
-                result = dblFirstNumber / dblSecondNumber;
-
-                Console.WriteLine("Result:" + dblFirstNumber + "/" + dblSecondNumber + "=" + result);
-                Console.WriteLine("----------------------------------\n");
-
+                try
+                {
+                    result = dblFirstNumber / dblSecondNumber;
+                    Console.WriteLine("Result:" + dblFirstNumber + "/" + dblSecondNumber + "=" + result);
+                }
+                catch
+                {
+                    Console.WriteLine("The operation result in a mathematical error.\n");
+                }
+                finally
+                {
+                    Console.WriteLine("----------------------------------\n");
+                }                             
                 Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "Q") endApp = true;
             }
@@ -247,7 +261,6 @@ namespace Matrix
             }
             return;
         }
-
         private static void NameApplication()
         {
             string nameApplication = "Welcome: Console Calculator.\n";
@@ -257,7 +270,6 @@ namespace Matrix
 
 
         }
-
         public static void PrintConsole(int[,] Matrix)
         {
             for (int i = 0; i < Matrix.GetUpperBound(0) + 1; i++)
@@ -270,29 +282,49 @@ namespace Matrix
             }
 
         }
-        static void Main(string[] args)
+        private static void MatrixMain()
         {
-            int[,] a = GetMatrix("A");
-            int[,] b = GetMatrix("B");
+            Console.Clear();
+            NameApplication();
+            string nameMathOperation = "Multiplication matrices";
+            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameMathOperation);
 
-            Console.WriteLine("Matrix A");
-            PrintConsole(a);
-            Console.WriteLine("Matrix B");
-            PrintConsole(b);
+            bool endApp = false;
 
-            int[,] result = MultiplyMatrix(a, b);
-            Console.WriteLine("Matrix C");
-            PrintConsole(result);
+            while (!endApp)
+            {
+                int[,] a = GetMatrix("A");
+                int[,] b = GetMatrix("B");
 
-            Console.ReadLine();
+                Console.WriteLine("Matrix A");
+                PrintConsole(a);
+                Console.WriteLine("Matrix B");
+                PrintConsole(b);
+
+                int[,] result = MultiplyMatrix(a, b);
+                Console.WriteLine("Matrix C");
+                PrintConsole(result);
+                Console.WriteLine("----------------------------------\n");
+
+                Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() == "Q") endApp = true;
+            }
+            return;
         }
-
         static int[,] MultiplyMatrix(int[,] MatrixA, int[,] MatrixB)
         {
             if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
             {
-                Console.WriteLine("Error: Matrix cannot be multiply.");
-                Console.ReadLine();
+                Console.WriteLine("Error: Matrix cannot be multiply. Press 'Q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() != "Q")
+                {
+                    MatrixMain();
+                }
+                else
+                {
+                     MainMenu(); 
+                }
             }
             int[,] MatrixC = new int[MatrixA.GetUpperBound(0) + 1, MatrixB.GetUpperBound(1) + 1];
             for (int i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)
@@ -307,44 +339,55 @@ namespace Matrix
             }
             return MatrixC;
         }
-
         public static int[,] GetMatrix(string name)
         {
             int cleanrowsMatrix;
             int cleancolMatrix;
             int i, j;
-
-            Console.Write("Type numbers of rows in matrix {0}: ", name);
+            bool endMethod = false;
+            Console.Write("Type number of rows in matrix {0}: ", name);
             string rowsMatrix = Console.ReadLine();
 
             while (!int.TryParse(rowsMatrix, out cleanrowsMatrix) | rowsMatrix == "0")
             {
                 Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                 Console.ReadLine();
-                Console.Write("Type numbers of rows in matrix {0}: ", name);
+                Console.Write("Type number of rows in matrix {0}: ", name);
                 rowsMatrix = Console.ReadLine();
             }
 
-            Console.Write("Type numbers of columns in matrix {0}: ", name);
+            Console.Write("Type number of columns in matrix {0}: ", name);
             string colMatrix = Console.ReadLine();
 
             while (!int.TryParse(colMatrix, out cleancolMatrix) | colMatrix == "0")
             {
                 Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                 Console.ReadLine();
-                Console.Write("Type numbers of rows in matrix {0}: ", name);
+                Console.Write("Type number of rows in matrix {0}: ", name);
                 colMatrix = Console.ReadLine();
             }
 
             int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
 
-            for (i = 0; i < cleanrowsMatrix; i++)
+            while (!endMethod)
             {
-                for (j = 0; j < cleancolMatrix; j++)
+                try
                 {
-                    Console.Write("Matrix number -  [{0},{1}]: ", i, j);
-                    Matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+                    for (i = 0; i < cleanrowsMatrix; i++)
+                    {
+                        for (j = 0; j < cleancolMatrix; j++)
+                        {
+                            Console.Write("Matrix number -  [{0},{1}]: ", i, j);
+                            Matrix[i, j] = int.Parse(Console.ReadLine());
+                        }
+                    }
                 }
+                catch
+                {
+                    Console.WriteLine("Error: Input elements is not valid. All elements in matrix will change by zero");
+                    endMethod = true;
+                }
+                break;
             }
             return Matrix;
         }
