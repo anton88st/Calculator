@@ -14,14 +14,14 @@ namespace Matrix
         }
         private static bool MainMenu()
         {
-            Console.Clear();
-            Console.WriteLine("Choose the mathematic operation:");
+            NameApplication("");
+            Console.WriteLine("Choose a mathematic operation:");
             Console.WriteLine("1) Addition numbers");
             Console.WriteLine("2) Substraction numbers");
             Console.WriteLine("3) Division numbers");
             Console.WriteLine("4) Multiplication numbers");
             Console.WriteLine("5) Multiplication matrices");
-            Console.WriteLine("6) Exit");
+            Console.WriteLine("q - Exit");
             Console.Write("Your choice: ");
             string result = Console.ReadLine();
 
@@ -30,13 +30,11 @@ namespace Matrix
                 AdditionNumbers();
                 return true;
             }
-
             if (result == "2")
             {
                 SubtractionNumbers();
                 return true;
             }
-
             if (result == "3")
             {
                 DivisionNumbers();
@@ -57,147 +55,83 @@ namespace Matrix
                 return false;
             }
         }
+        public static double TypeNumbers(string name)
+        {
+            {
+                string typeNumber = "";
+                double dbltypeNumber = 0;
+
+                Console.Write("{0} number: ", name);
+                typeNumber = Console.ReadLine();
+
+                while (!double.TryParse(typeNumber, out dbltypeNumber))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("{0} number: ", name);
+                    typeNumber = Console.ReadLine();
+                }
+                return dbltypeNumber;
+            }
+        }
         private static void AdditionNumbers()
         {
             bool endApp = false;
-            string firstNumber = "";
-            string secondNumber = "";
-            double result = 0;
-            double dblFirstNumber = 0;
-            double dblSecondNumber = 0;
-
-            Console.Clear();
-            NameApplication();
-            string nameMathOperation = "Addition numbers";
-            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
-            Console.WriteLine(nameMathOperation);
+            NameApplication("Addition numbers");
 
             while (!endApp)
             {
-                Console.Write("Type the first number: ");
-                firstNumber = Console.ReadLine();
+                double typenumber1 = TypeNumbers("First");
+                double typenumber2 = TypeNumbers("Second");
 
-                while (!double.TryParse(firstNumber, out dblFirstNumber))
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the first number: ");
-                    firstNumber = Console.ReadLine();
-                }
-
-                Console.Write("Type the second number: ");
-                secondNumber = Console.ReadLine();
-
-                while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the second number: ");
-                    secondNumber = Console.ReadLine();
-                }
-
-                result = dblFirstNumber + dblSecondNumber;
-
-                Console.WriteLine("Result:" + dblFirstNumber + "+" + dblSecondNumber + "=" + result);
+                Console.WriteLine("Result: {0}+{1}={2}", typenumber1, typenumber2, typenumber1 + typenumber2);
                 Console.WriteLine("----------------------------------\n");
-
-                Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
-                if (Console.ReadLine() == "Q") endApp = true;
+                Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() == "q") endApp = true;
             }
             return;
         }
         private static void SubtractionNumbers()
         {
             bool endApp = false;
-            string firstNumber = "";
-            string secondNumber = "";
-            double result = 0;
-            double dblFirstNumber = 0;
-            double dblSecondNumber = 0;
-
-            Console.Clear();
-            NameApplication();
-            string nameMathOperation = "Subtraction numbers";
-            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
-            Console.WriteLine(nameMathOperation);
+            NameApplication("Subtraction numbers");
 
             while (!endApp)
             {
-                Console.Write("Type the first number: ");
-                firstNumber = Console.ReadLine();
+                double typenumber1 = TypeNumbers("First");
+                double typenumber2 = TypeNumbers("Second");
 
-                while (!double.TryParse(firstNumber, out dblFirstNumber))
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the first number: ");
-                    firstNumber = Console.ReadLine();
-                }
-
-                Console.Write("Type the second number: ");
-                secondNumber = Console.ReadLine();
-
-                while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the second number: ");
-                    secondNumber = Console.ReadLine();
-                }
-
-                result = dblFirstNumber - dblSecondNumber;
-
-                Console.WriteLine("Result: " + dblFirstNumber + "-" + dblSecondNumber + "=" + result);
+                Console.WriteLine("Result: {0}-{1}={2} ", typenumber1, typenumber2, typenumber1 - typenumber2);
                 Console.WriteLine("----------------------------------\n");
-
-                Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
-                if (Console.ReadLine() == "Q") endApp = true;
+                Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() == "q") endApp = true;
             }
             return;
         }
         private static void DivisionNumbers()
         {
             bool endApp = false;
-            string firstNumber = "";
             string secondNumber = "";
-            //double result = 0;
-            double dblFirstNumber = 0;
             double dblSecondNumber = 0;
-            double result = double.NaN;
-
-            Console.Clear();
-            NameApplication();
-            string nameMathOperation = "Division numbers";
-            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
-            Console.WriteLine(nameMathOperation);
+            NameApplication("Division numbers");
 
             while (!endApp)
             {
-                Console.Write("Type the first number: ");
-                firstNumber = Console.ReadLine();
+                double typenumber1 = TypeNumbers("First");
 
-                while (!double.TryParse(firstNumber, out dblFirstNumber))
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the first number: ");
-                    firstNumber = Console.ReadLine();
-                }
-
-                Console.Write("Type the second number: ");
+                Console.Write("Second number: ");
                 secondNumber = Console.ReadLine();
 
                 while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
-                    Console.Write("Type the second number: ");
+                    Console.Write("Second number: ");
                     secondNumber = Console.ReadLine();
                 }
                 try
                 {
-                    result = dblFirstNumber / dblSecondNumber;
-                    Console.WriteLine("Result:" + dblFirstNumber + "/" + dblSecondNumber + "=" + result);
+                    Console.WriteLine("Result: {0}/{1}={2}", typenumber1, dblSecondNumber, typenumber1 / dblSecondNumber);
                 }
                 catch
                 {
@@ -206,69 +140,38 @@ namespace Matrix
                 finally
                 {
                     Console.WriteLine("----------------------------------\n");
-                }                             
-                Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
-                if (Console.ReadLine() == "Q") endApp = true;
+                }
+                Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() == "q") endApp = true;
             }
             return;
         }
         private static void MultiplicationNumbers()
         {
             bool endApp = false;
-            string firstNumber = "";
-            string secondNumber = "";
-            double result = 0;
-            double dblFirstNumber = 0;
-            double dblSecondNumber = 0;
-
-            Console.Clear();
-            NameApplication();
-            string nameMathOperation = "Multiplication numbers";
-            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
-            Console.WriteLine(nameMathOperation);
+            NameApplication("Multiplication numbers");
 
             while (!endApp)
             {
-                Console.Write("Type the first number: ");
-                firstNumber = Console.ReadLine();
+                double typenumber1 = TypeNumbers("First");
+                double typenumber2 = TypeNumbers("Second");
 
-                while (!double.TryParse(firstNumber, out dblFirstNumber))
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the first number: ");
-                    firstNumber = Console.ReadLine();
-                }
-
-                Console.Write("Type the second number: ");
-                secondNumber = Console.ReadLine();
-
-                while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Type the second number: ");
-                    secondNumber = Console.ReadLine();
-                }
-
-                result = dblFirstNumber * dblSecondNumber;
-
-                Console.WriteLine("Result:" + dblFirstNumber + "*" + dblSecondNumber + "=" + result);
+                Console.WriteLine("Result: {0}x{1}={2}", typenumber1, typenumber2, typenumber1 * typenumber2);
                 Console.WriteLine("----------------------------------\n");
-
-                Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
-                if (Console.ReadLine() == "Q") endApp = true;
+                Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() == "q") endApp = true;
             }
             return;
         }
-        private static void NameApplication()
+        private static void NameApplication(string nameOperation)
         {
             string nameApplication = "Welcome: Console Calculator.\n";
-
+            Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth - nameApplication.Length) / 2, Console.CursorTop);
             Console.WriteLine(nameApplication);
-
-
+            Console.SetCursorPosition((Console.WindowWidth - nameOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameOperation);
+            Console.WriteLine("HELP: To input a fractional number use \",\" instead of \".\"");
         }
         public static void PrintConsole(int[,] Matrix)
         {
@@ -284,11 +187,7 @@ namespace Matrix
         }
         private static void MatrixMain()
         {
-            Console.Clear();
-            NameApplication();
-            string nameMathOperation = "Multiplication matrices";
-            Console.SetCursorPosition((Console.WindowWidth - nameMathOperation.Length) / 2, Console.CursorTop);
-            Console.WriteLine(nameMathOperation);
+            NameApplication("Multiplication matrices");
 
             bool endApp = false;
 
@@ -307,8 +206,8 @@ namespace Matrix
                 PrintConsole(result);
                 Console.WriteLine("----------------------------------\n");
 
-                Console.Write("Press 'Q' and close the app, or press any other key and to continue: ");
-                if (Console.ReadLine() == "Q") endApp = true;
+                Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
+                if (Console.ReadLine() == "q") endApp = true;
             }
             return;
         }
@@ -316,15 +215,9 @@ namespace Matrix
         {
             if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
             {
-                Console.WriteLine("Error: Matrix cannot be multiply. Press 'Q' and close the app, or press any other key and to continue: ");
-                if (Console.ReadLine() != "Q")
-                {
-                    MatrixMain();
-                }
-                else
-                {
-                     MainMenu(); 
-                }
+                Console.WriteLine("Error: Matrix cannot be multiply. MatrixC = MatrixA. Press Enter to continue: ");
+                Console.ReadLine();
+                return MatrixA;
             }
             int[,] MatrixC = new int[MatrixA.GetUpperBound(0) + 1, MatrixB.GetUpperBound(1) + 1];
             for (int i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)
@@ -385,9 +278,9 @@ namespace Matrix
                 catch
                 {
                     Console.WriteLine("Error: Input elements is not valid. All elements in matrix will change by zero");
-                    endMethod = true;
+
                 }
-                break;
+                endMethod = true;
             }
             return Matrix;
         }
