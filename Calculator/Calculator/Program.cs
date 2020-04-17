@@ -61,36 +61,37 @@ namespace Matrix
                 return true;
             }
         }
-        public static double TypeNumbers(string name)
-        {
-            {
-                string typeNumber = "";
-                double dbltypeNumber = 0;
-
-                Console.Write("{0} number: ", name);
-                typeNumber = Console.ReadLine();
-
-                  while (!double.TryParse(typeNumber, out dbltypeNumber))
-                   {
-                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                     Console.ReadLine();
-                     Console.Write("{0} number: ", name);
-                     typeNumber = Console.ReadLine();
-                   }
-                return dbltypeNumber;
-            }
-        }
         private static void AdditionNumbers()
         {
-            bool endApp = false ;
+            bool endApp = false;
+            double dbltypeNumber1; double dbltypeNumber2;
             NameApplication("Addition numbers");
-
             while (!endApp)
             {
-                double typenumber1 = TypeNumbers("First");
-                double typenumber2 = TypeNumbers("Second");
-
-                Console.WriteLine("Result: {0}+{1}={2}", typenumber1, typenumber2, typenumber1 + typenumber2);
+                Console.Write("First number: ");
+                string typeNumber1 = Console.ReadLine();
+                if (typeNumber1 == "q") { return; }
+                while (!double.TryParse(typeNumber1, out dbltypeNumber1))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("First number: ");
+                    typeNumber1 = Console.ReadLine();
+                    if (typeNumber1 == "q") { return; }
+                }
+                Console.Write("Second number: ");
+                string typeNumber2 = Console.ReadLine();
+                if (typeNumber2 == "q")
+                { return; }
+                while (!double.TryParse(typeNumber2, out dbltypeNumber2))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("Second number: ");
+                    typeNumber2 = Console.ReadLine();
+                    if (typeNumber2 == "q") { return; }
+                }
+                Console.WriteLine("Result: {0}+{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 + dbltypeNumber2);
                 Console.WriteLine("----------------------------------\n");
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
@@ -100,14 +101,34 @@ namespace Matrix
         private static void SubtractionNumbers()
         {
             bool endApp = false;
+            double dbltypeNumber1; double dbltypeNumber2;
             NameApplication("Subtraction numbers");
-
             while (!endApp)
             {
-                double typenumber1 = TypeNumbers("First");
-                double typenumber2 = TypeNumbers("Second");
-
-                Console.WriteLine("Result: {0}-{1}={2} ", typenumber1, typenumber2, typenumber1 - typenumber2);
+                Console.Write("First number: ");
+                string typeNumber1 = Console.ReadLine();
+                if (typeNumber1 == "q") { return; }
+                while (!double.TryParse(typeNumber1, out dbltypeNumber1))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("First number: ");
+                    typeNumber1 = Console.ReadLine();
+                    if (typeNumber1 == "q") { return; }
+                }
+                Console.Write("Second number: ");
+                string typeNumber2 = Console.ReadLine();
+                if (typeNumber2 == "q")
+                { return; }
+                while (!double.TryParse(typeNumber2, out dbltypeNumber2))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("Second number: ");
+                    typeNumber2 = Console.ReadLine();
+                    if (typeNumber2 == "q") { return; }
+                }
+                Console.WriteLine("Result: {0}-{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 - dbltypeNumber2);
                 Console.WriteLine("----------------------------------\n");
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
@@ -117,34 +138,36 @@ namespace Matrix
         private static void DivisionNumbers()
         {
             bool endApp = false;
-            string secondNumber = "";
-            double dblSecondNumber = 0;
+            double dbltypeNumber1; double dbltypeNumber2;
             NameApplication("Division numbers");
-
             while (!endApp)
             {
-                double typenumber1 = TypeNumbers("First");
-
-                Console.Write("Second number: ");
-                secondNumber = Console.ReadLine();
-                if (secondNumber == "q")
+                Console.Write("First number: ");
+                string typeNumber1 = Console.ReadLine();
+                if (typeNumber1 == "q") { return; }
+                while (!double.TryParse(typeNumber1, out dbltypeNumber1))
                 {
-                    MainMenu();
-                    break;
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("First number: ");
+                    typeNumber1 = Console.ReadLine();
+                    if (typeNumber1 == "q") { return; }
                 }
-                else
+                Console.Write("Second number: ");
+                string typeNumber2 = Console.ReadLine();
+                if (typeNumber2 == "q")
+                { return; }
+                while (!double.TryParse(typeNumber2, out dbltypeNumber2) | typeNumber2 == "0")
                 {
-                    while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
-                    {
-                        Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                        Console.ReadLine();
-                        Console.Write("Second number: ");
-                        secondNumber = Console.ReadLine();
-                    }
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("Second number: ");
+                    typeNumber2 = Console.ReadLine();
+                    if (typeNumber2 == "q") { return; }
                 }
                 try
                 {
-                    Console.WriteLine("Result: {0}/{1}={2}", typenumber1, dblSecondNumber, typenumber1 / dblSecondNumber);
+                    Console.WriteLine("Result: {0}/{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 / dbltypeNumber2);
                 }
                 catch
                 {
@@ -162,14 +185,34 @@ namespace Matrix
         private static void MultiplicationNumbers()
         {
             bool endApp = false;
+            double dbltypeNumber1; double dbltypeNumber2;
             NameApplication("Multiplication numbers");
-
             while (!endApp)
             {
-                double typenumber1 = TypeNumbers("First");
-                double typenumber2 = TypeNumbers("Second");
-
-                Console.WriteLine("Result: {0}x{1}={2}", typenumber1, typenumber2, typenumber1 * typenumber2);
+                Console.Write("First number: ");
+                string typeNumber1 = Console.ReadLine();
+                if (typeNumber1 == "q") { return; }
+                while (!double.TryParse(typeNumber1, out dbltypeNumber1))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("First number: ");
+                    typeNumber1 = Console.ReadLine();
+                    if (typeNumber1 == "q") { return; }
+                }
+                Console.Write("Second number: ");
+                string typeNumber2 = Console.ReadLine();
+                if (typeNumber2 == "q")
+                { return; }
+                while (!double.TryParse(typeNumber2, out dbltypeNumber2))
+                {
+                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                    Console.ReadLine();
+                    Console.Write("Second number: ");
+                    typeNumber2 = Console.ReadLine();
+                    if (typeNumber2 == "q") { return; }
+                }
+                Console.WriteLine("Result: {0}x{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 * dbltypeNumber2);
                 Console.WriteLine("----------------------------------\n");
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
@@ -184,7 +227,7 @@ namespace Matrix
             Console.WriteLine(nameApplication);
             Console.SetCursorPosition((Console.WindowWidth - nameOperation.Length) / 2, Console.CursorTop);
             Console.WriteLine(nameOperation);
-            Console.WriteLine("HELP: To input a fractional number use \",\" instead of \".\"");
+            Console.WriteLine("HELP: Exit from current menu - \"q\".");
         }
         public static void PrintConsole(int[,] Matrix)
         {
