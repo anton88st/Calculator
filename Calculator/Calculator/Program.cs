@@ -252,10 +252,20 @@ namespace Matrix
                 int[,] a = GetMatrix("A");
                 int[,] b = GetMatrix("B");
 
+                if (a.GetUpperBound(1) + 1 != b.GetUpperBound(0) + 1)
+                {
+                    Console.WriteLine("Error: Matrix cannot be multiply. Matrix A columns not equals Matrix B rows.");
+                    Console.ReadLine();
+                    return;
+                }
+                               
+                int[,] aa = TypeElementsA(a);
+                int[,] bb = TypeElementsB(b);
+
                 Console.WriteLine("Matrix A");
-                PrintConsole(a);
+                PrintConsole(aa);
                 Console.WriteLine("Matrix B");
-                PrintConsole(b);
+                PrintConsole(bb);
 
                 int[,] result = MultiplyMatrix(a, b);
                 Console.WriteLine("Matrix C");
@@ -269,12 +279,12 @@ namespace Matrix
         }
         static int[,] MultiplyMatrix(int[,] MatrixA, int[,] MatrixB)
         {
-            if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
+            /*if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
             {
                 Console.WriteLine("Error: Matrix cannot be multiply. MatrixC = MatrixA. Press Enter to continue: ");
                 Console.ReadLine();
                 return MatrixA;
-            }
+            }*/
             int[,] MatrixC = new int[MatrixA.GetUpperBound(0) + 1, MatrixB.GetUpperBound(1) + 1];
             for (int i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)
             {
@@ -293,10 +303,10 @@ namespace Matrix
             int cleanrowsMatrix;
             int cleancolMatrix;
             int i, j;
-            bool endMethod = false;
+           // bool endMethod = false;
             Console.Write("Type number of rows in matrix {0}: ", name);
             string rowsMatrix = Console.ReadLine();
-
+              
             while (!int.TryParse(rowsMatrix, out cleanrowsMatrix) | rowsMatrix == "0")
             {
                 Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
@@ -318,7 +328,7 @@ namespace Matrix
 
             int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
 
-            while (!endMethod)
+            /*while (!endMethod)
             {
                 try
                 {
@@ -337,8 +347,74 @@ namespace Matrix
 
                 }
                 endMethod = true;
-            }
+            }*/
             return Matrix;
+        }
+        public static int[,] TypeElementsA(int[,] MatrixA)
+        {
+            bool endMethod = false; int i; int j;
+            //int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
+
+            while (!endMethod)
+            {
+                try
+                {
+                    for (i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)
+                    {
+                        for (j = 0; j < MatrixA.GetUpperBound(1) + 1; j++)
+                        {
+                            Console.Write("MatrixA number -  [{0},{1}]: ", i, j);
+                            MatrixA[i, j] = int.Parse(Console.ReadLine());
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Error: Input elements is not valid. All elements in matrix will change by zero");
+
+                }
+                endMethod = true;
+            }
+            return MatrixA;
+        }
+        public static int[,] TypeElementsB(int[,] MatrixB)
+        {
+            bool endMethod = false; int i; int j;
+            //int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
+
+            //int[,] a = GetMatrix("A");
+            //int[,] b = GetMatrix("B");
+
+
+
+            /*if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
+            {
+                Console.WriteLine("Error: Matrix cannot be multiply. MatrixC = MatrixA. Press Enter to continue: ");
+                Console.ReadLine();
+                return MatrixA;
+            }*/
+
+            while (!endMethod)
+            {
+                try
+                {
+                    for (i = 0; i < MatrixB.GetUpperBound(0) + 1; i++)
+                    {
+                        for (j = 0; j < MatrixB.GetUpperBound(1) + 1; j++)
+                        {
+                            Console.Write("MatrixB number -  [{0},{1}]: ", i, j);
+                            MatrixB[i, j] = int.Parse(Console.ReadLine());
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Error: Input elements is not valid. All elements in matrix will change by zero");
+
+                }
+                endMethod = true;
+            }
+            return MatrixB;
         }
     }
 }
