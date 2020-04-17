@@ -227,7 +227,7 @@ namespace Matrix
             Console.WriteLine(nameApplication);
             Console.SetCursorPosition((Console.WindowWidth - nameOperation.Length) / 2, Console.CursorTop);
             Console.WriteLine(nameOperation);
-            Console.WriteLine("HELP: Exit from current menu - \"q\".");
+            //Console.WriteLine("HELP: Exit from current menu - \"q\".");
         }
         public static void PrintConsole(int[,] Matrix)
         {
