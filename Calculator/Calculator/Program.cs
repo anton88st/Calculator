@@ -50,9 +50,15 @@ namespace Matrix
                 MatrixMain();
                 return true;
             }
-            else
+            if (result == "q")
             {
                 return false;
+            }
+            else
+            {
+                Console.WriteLine("Error: Input data is not valid. Press Enter and select option from list above");
+                Console.ReadLine();
+                return true;
             }
         }
         public static double TypeNumbers(string name)
@@ -64,19 +70,19 @@ namespace Matrix
                 Console.Write("{0} number: ", name);
                 typeNumber = Console.ReadLine();
 
-                while (!double.TryParse(typeNumber, out dbltypeNumber))
-                {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("{0} number: ", name);
-                    typeNumber = Console.ReadLine();
-                }
+                  while (!double.TryParse(typeNumber, out dbltypeNumber))
+                   {
+                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                     Console.ReadLine();
+                     Console.Write("{0} number: ", name);
+                     typeNumber = Console.ReadLine();
+                   }
                 return dbltypeNumber;
             }
         }
         private static void AdditionNumbers()
         {
-            bool endApp = false;
+            bool endApp = false ;
             NameApplication("Addition numbers");
 
             while (!endApp)
@@ -121,13 +127,20 @@ namespace Matrix
 
                 Console.Write("Second number: ");
                 secondNumber = Console.ReadLine();
-
-                while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
+                if (secondNumber == "q")
                 {
-                    Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
-                    Console.ReadLine();
-                    Console.Write("Second number: ");
-                    secondNumber = Console.ReadLine();
+                    MainMenu();
+                    break;
+                }
+                else
+                {
+                    while (!double.TryParse(secondNumber, out dblSecondNumber) | secondNumber == "0")
+                    {
+                        Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
+                        Console.ReadLine();
+                        Console.Write("Second number: ");
+                        secondNumber = Console.ReadLine();
+                    }
                 }
                 try
                 {
