@@ -6,167 +6,189 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
+            string saveInMemory = "0";
             bool displayMemu = true;
             while (displayMemu)
             {
-                displayMemu = MainMenu();
+                NameApplication("");
+                Console.WriteLine("Choose a mathematic operation:");
+                Console.WriteLine("1) Addition numbers");
+                Console.WriteLine("2) Substraction numbers");
+                Console.WriteLine("3) Division numbers");
+                Console.WriteLine("4) Multiplication numbers");
+                Console.WriteLine("5) Multiplication matrices");
+                Console.WriteLine("q - Exit");
+                Console.Write("Your choice: ");
+                string result = Console.ReadLine();
+                switch (result)
+                {
+                    case "1":
+                        saveInMemory = AdditionNumbers(saveInMemory);
+                        displayMemu = true;
+                            break;
+                    case "2":
+                        saveInMemory = SubtractionNumbers(saveInMemory);
+                        displayMemu = true;
+                        break;
+                    case "3":
+                        saveInMemory = DivisionNumbers(saveInMemory);
+                        displayMemu = true;
+                        break;
+                    case "4":
+                        saveInMemory = MultiplicationNumbers(saveInMemory);
+                        displayMemu = true;
+                        break;
+                    case "5":
+                        MatrixMain();
+                        displayMemu = true;
+                        break;
+                    case "q":
+                        displayMemu = false;
+                        break;
+                    default:
+                        Console.WriteLine("Error: Input data is not valid. Press Enter and select option from list above");
+                        Console.ReadLine();
+                        displayMemu = true;
+                        break;
+                }
             }
         }
-        private static bool MainMenu()
-        {
-            NameApplication("");
-            Console.WriteLine("Choose a mathematic operation:");
-            Console.WriteLine("1) Addition numbers");
-            Console.WriteLine("2) Substraction numbers");
-            Console.WriteLine("3) Division numbers");
-            Console.WriteLine("4) Multiplication numbers");
-            Console.WriteLine("5) Multiplication matrices");
-            Console.WriteLine("q - Exit");
-            Console.Write("Your choice: ");
-            string result = Console.ReadLine();
-
-            if (result == "1")
-            {
-                AdditionNumbers();
-                return true;
-            }
-            if (result == "2")
-            {
-                SubtractionNumbers();
-                return true;
-            }
-            if (result == "3")
-            {
-                DivisionNumbers();
-                return true;
-            }
-            if (result == "4")
-            {
-                MultiplicationNumbers();
-                return true;
-            }
-            if (result == "5")
-            {
-                MatrixMain();
-                return true;
-            }
-            if (result == "q")
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Error: Input data is not valid. Press Enter and select option from list above");
-                Console.ReadLine();
-                return true;
-            }
-        }
-        private static void AdditionNumbers()
+        private static string AdditionNumbers(string saveInMemory)
         {
             bool endApp = false;
-            double dbltypeNumber1; double dbltypeNumber2;
+            double dbltypeNumber1; double dbltypeNumber2; double result = 0;
             NameApplication("Addition numbers");
             while (!endApp)
             {
                 Console.Write("First number: ");
                 string typeNumber1 = Console.ReadLine();
-                if (typeNumber1 == "q") { return; }
+                if (typeNumber1 == "q") { return saveInMemory; }
+                if (typeNumber1 == "s") { typeNumber1 = saveInMemory;}
                 while (!double.TryParse(typeNumber1, out dbltypeNumber1))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("First number: ");
                     typeNumber1 = Console.ReadLine();
-                    if (typeNumber1 == "q") { return; }
+                    if (typeNumber1 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
                 Console.Write("Second number: ");
                 string typeNumber2 = Console.ReadLine();
-                if (typeNumber2 == "q")
-                { return; }
+                if (typeNumber2 == "q") { return saveInMemory; }
+                if (typeNumber2 == "s")
+                {
+                    typeNumber2 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber2, out dbltypeNumber2))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("Second number: ");
                     typeNumber2 = Console.ReadLine();
-                    if (typeNumber2 == "q") { return; }
+                    if (typeNumber2 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
+                result = dbltypeNumber1 + dbltypeNumber2;
+                saveInMemory = Convert.ToString(result);
                 Console.WriteLine("Result: {0}+{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 + dbltypeNumber2);
                 Console.WriteLine("----------------------------------\n");
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
             }
-            return;
+            return saveInMemory;
         }
-        private static void SubtractionNumbers()
+        private static string SubtractionNumbers(string saveInMemory)
         {
             bool endApp = false;
-            double dbltypeNumber1; double dbltypeNumber2;
+            double dbltypeNumber1; double dbltypeNumber2; double result = 0;
             NameApplication("Subtraction numbers");
             while (!endApp)
             {
                 Console.Write("First number: ");
                 string typeNumber1 = Console.ReadLine();
-                if (typeNumber1 == "q") { return; }
+                if (typeNumber1 == "q") { return saveInMemory; }
+                if (typeNumber1 == "s")
+                {
+                    typeNumber1 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber1, out dbltypeNumber1))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("First number: ");
                     typeNumber1 = Console.ReadLine();
-                    if (typeNumber1 == "q") { return; }
+                    if (typeNumber1 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
                 Console.Write("Second number: ");
                 string typeNumber2 = Console.ReadLine();
-                if (typeNumber2 == "q")
-                { return; }
+                if (typeNumber2 == "q") { return saveInMemory; }
+                if (typeNumber2 == "s")
+                {
+                    typeNumber2 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber2, out dbltypeNumber2))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("Second number: ");
                     typeNumber2 = Console.ReadLine();
-                    if (typeNumber2 == "q") { return; }
+                    if (typeNumber2 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
+                result = dbltypeNumber1 - dbltypeNumber2;
+                saveInMemory = Convert.ToString(result);
                 Console.WriteLine("Result: {0}-{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 - dbltypeNumber2);
                 Console.WriteLine("----------------------------------\n");
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
             }
-            return;
+            return saveInMemory;
         }
-        private static void DivisionNumbers()
+        private static string DivisionNumbers(string saveInMemory)
         {
             bool endApp = false;
-            double dbltypeNumber1; double dbltypeNumber2;
+            double dbltypeNumber1; double dbltypeNumber2; double result = 0;
             NameApplication("Division numbers");
             while (!endApp)
             {
                 Console.Write("First number: ");
                 string typeNumber1 = Console.ReadLine();
-                if (typeNumber1 == "q") { return; }
+                if (typeNumber1 == "q") { return saveInMemory; }
+                if (typeNumber1 == "s")
+                {
+                    typeNumber1 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber1, out dbltypeNumber1))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("First number: ");
                     typeNumber1 = Console.ReadLine();
-                    if (typeNumber1 == "q") { return; }
+                    if (typeNumber1 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
                 Console.Write("Second number: ");
                 string typeNumber2 = Console.ReadLine();
-                if (typeNumber2 == "q")
-                { return; }
+                if (typeNumber2 == "q") { return saveInMemory; }
+                if (typeNumber2 == "s")
+                {
+                    typeNumber2 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber2, out dbltypeNumber2) | typeNumber2 == "0")
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("Second number: ");
                     typeNumber2 = Console.ReadLine();
-                    if (typeNumber2 == "q") { return; }
+                    if (typeNumber2 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
                 try
                 {
+                    result = dbltypeNumber1 / dbltypeNumber2;
+                    saveInMemory = Convert.ToString(result);
                     Console.WriteLine("Result: {0}/{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 / dbltypeNumber2);
                 }
                 catch
@@ -180,44 +202,55 @@ namespace Matrix
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
             }
-            return;
+            return saveInMemory;
         }
-        private static void MultiplicationNumbers()
+        private static string MultiplicationNumbers(string saveInMemory)
         {
             bool endApp = false;
-            double dbltypeNumber1; double dbltypeNumber2;
+            double dbltypeNumber1; double dbltypeNumber2; double result = 0;
             NameApplication("Multiplication numbers");
             while (!endApp)
             {
                 Console.Write("First number: ");
                 string typeNumber1 = Console.ReadLine();
-                if (typeNumber1 == "q") { return; }
+                if (typeNumber1 == "q") { return saveInMemory; }
+                if (typeNumber1 == "s")
+                {
+                    typeNumber1 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber1, out dbltypeNumber1))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("First number: ");
                     typeNumber1 = Console.ReadLine();
-                    if (typeNumber1 == "q") { return; }
+                    if (typeNumber1 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
                 Console.Write("Second number: ");
                 string typeNumber2 = Console.ReadLine();
-                if (typeNumber2 == "q")
-                { return; }
+                if (typeNumber2 == "q") { return saveInMemory; }
+                if (typeNumber2 == "s")
+                {
+                    typeNumber2 = saveInMemory;
+                }
                 while (!double.TryParse(typeNumber2, out dbltypeNumber2))
                 {
                     Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
                     Console.ReadLine();
                     Console.Write("Second number: ");
                     typeNumber2 = Console.ReadLine();
-                    if (typeNumber2 == "q") { return; }
+                    if (typeNumber2 == "q") { return saveInMemory; }
+                    if (typeNumber1 == "s") { typeNumber1 = saveInMemory; }
                 }
+                result = dbltypeNumber1 * dbltypeNumber2;
+                saveInMemory = Convert.ToString(result);
                 Console.WriteLine("Result: {0}x{1}={2}", dbltypeNumber1, dbltypeNumber2, dbltypeNumber1 * dbltypeNumber2);
                 Console.WriteLine("----------------------------------\n");
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
             }
-            return;
+            return saveInMemory;
         }
         private static void NameApplication(string nameOperation)
         {
@@ -227,7 +260,7 @@ namespace Matrix
             Console.WriteLine(nameApplication);
             Console.SetCursorPosition((Console.WindowWidth - nameOperation.Length) / 2, Console.CursorTop);
             Console.WriteLine(nameOperation);
-            //Console.WriteLine("HELP: Exit from current menu - \"q\".");
+            Console.WriteLine("HELP: Exit from current menu - \"q\". To input last result press \"s\".");
         }
         public static void PrintConsole(int[,] Matrix)
         {
@@ -243,8 +276,13 @@ namespace Matrix
         }
         private static void MatrixMain()
         {
-            NameApplication("Multiplication matrices");
-
+            string nameApplication = "Welcome: Console Calculator.\n";
+            string nameOperation = "Multiplication Matrix.";
+            Console.Clear();
+            Console.SetCursorPosition((Console.WindowWidth - nameApplication.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameApplication);
+            Console.SetCursorPosition((Console.WindowWidth - nameOperation.Length) / 2, Console.CursorTop);
+            Console.WriteLine(nameOperation);
             bool endApp = false;
 
             while (!endApp)
@@ -271,7 +309,6 @@ namespace Matrix
                 Console.WriteLine("Matrix C");
                 PrintConsole(result);
                 Console.WriteLine("----------------------------------\n");
-
                 Console.Write("Press 'q' and close the app, or press any other key and to continue: ");
                 if (Console.ReadLine() == "q") endApp = true;
             }
@@ -279,12 +316,6 @@ namespace Matrix
         }
         static int[,] MultiplyMatrix(int[,] MatrixA, int[,] MatrixB)
         {
-            /*if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
-            {
-                Console.WriteLine("Error: Matrix cannot be multiply. MatrixC = MatrixA. Press Enter to continue: ");
-                Console.ReadLine();
-                return MatrixA;
-            }*/
             int[,] MatrixC = new int[MatrixA.GetUpperBound(0) + 1, MatrixB.GetUpperBound(1) + 1];
             for (int i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)
             {
@@ -302,11 +333,9 @@ namespace Matrix
         {
             int cleanrowsMatrix;
             int cleancolMatrix;
-            int i, j;
-           // bool endMethod = false;
+    
             Console.Write("Type number of rows in matrix {0}: ", name);
             string rowsMatrix = Console.ReadLine();
-              
             while (!int.TryParse(rowsMatrix, out cleanrowsMatrix) | rowsMatrix == "0")
             {
                 Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
@@ -314,10 +343,8 @@ namespace Matrix
                 Console.Write("Type number of rows in matrix {0}: ", name);
                 rowsMatrix = Console.ReadLine();
             }
-
             Console.Write("Type number of columns in matrix {0}: ", name);
             string colMatrix = Console.ReadLine();
-
             while (!int.TryParse(colMatrix, out cleancolMatrix) | colMatrix == "0")
             {
                 Console.Write("An error: The entered data is not valid!! Press enter and type a valid number.");
@@ -325,36 +352,12 @@ namespace Matrix
                 Console.Write("Type number of rows in matrix {0}: ", name);
                 colMatrix = Console.ReadLine();
             }
-
             int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
-
-            /*while (!endMethod)
-            {
-                try
-                {
-                    for (i = 0; i < cleanrowsMatrix; i++)
-                    {
-                        for (j = 0; j < cleancolMatrix; j++)
-                        {
-                            Console.Write("Matrix number -  [{0},{1}]: ", i, j);
-                            Matrix[i, j] = int.Parse(Console.ReadLine());
-                        }
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("Error: Input elements is not valid. All elements in matrix will change by zero");
-
-                }
-                endMethod = true;
-            }*/
             return Matrix;
         }
         public static int[,] TypeElementsA(int[,] MatrixA)
         {
             bool endMethod = false; int i; int j;
-            //int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
-
             while (!endMethod)
             {
                 try
@@ -380,20 +383,7 @@ namespace Matrix
         public static int[,] TypeElementsB(int[,] MatrixB)
         {
             bool endMethod = false; int i; int j;
-            //int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
-
-            //int[,] a = GetMatrix("A");
-            //int[,] b = GetMatrix("B");
-
-
-
-            /*if (MatrixA.GetUpperBound(1) + 1 != MatrixB.GetUpperBound(0) + 1)
-            {
-                Console.WriteLine("Error: Matrix cannot be multiply. MatrixC = MatrixA. Press Enter to continue: ");
-                Console.ReadLine();
-                return MatrixA;
-            }*/
-
+           
             while (!endMethod)
             {
                 try
