@@ -10,25 +10,27 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Select operation: ");
-
+            DataHelper mydata = new DataHelper();
+            double number1 = mydata.Input("First");
+            double number2 = mydata.Input("Second");
+            Console.WriteLine("Select calculation: ");
             string select = Console.ReadLine();
             switch (select)
             {
                 case "a":
-                    Addition addition = new Addition { Number1 = 1, Number2 = 2 };
+                    Add addition = new Add { Number1 = 1, Number2 = 2 };
                     addition.Calculation();
                     break;
                 case "s":
-                    Subtraction subtraction = new Subtraction { Number1 = 1, Number2 = 2 };
+                    Subtract subtraction = new Subtract { Number1 = 1, Number2 = 2 };
                     subtraction.Calculation();
                     break;
                 case "m":
-                    Multiplication multiplication = new Multiplication { Number1 = 1, Number2 = 2 };
+                    Multiply multiplication = new Multiply { Number1 = 1, Number2 = 2 };
                     multiplication.Calculation();
                     break;
                 case "d":
-                    Division division = new Division { Number1 = 1, Number2 = 2 };
+                    Divide division = new Divide { Number1 = 1, Number2 = 2 };
                     division.Calculation();
                     break;
             }
@@ -43,34 +45,31 @@ namespace Calculator
         public double Result { get; set; }
         public abstract void Calculation();
     }
-    class Addition : Base
+    class Add : Base
     {
         public override void Calculation()
         {
             Result = Number1 + Number2;
             Console.WriteLine("Result:{0}", Result);
-            return;
         }
     }
-    class Subtraction : Base
+    class Subtract : Base
     {
         public override void Calculation()
         {
             Result = Number1 - Number2;
             Console.WriteLine("Result:{0} ", Result);
-            return;
         }
     }
-    class Multiplication : Base
+    class Multiply : Base
     {
         public override void Calculation()
         {
             Result = Number1 * Number2;
             Console.WriteLine("Result:{0} ", Result);
-            return;
         }
     }
-    class Division : Base
+    class Divide : Base
     {
         public override void Calculation()
         {
@@ -83,7 +82,6 @@ namespace Calculator
                 Result = Number1 / Number2;
                 Console.WriteLine("Result:{0} ", Result);
             }
-            return;
         }
     }
 }
