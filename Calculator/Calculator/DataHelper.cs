@@ -8,7 +8,7 @@ namespace Calculator
 {
     class DataHelper
     {
-        public string InputMenu()
+        public string OutputMenu()
         {
             NameApplication();
             Console.WriteLine("Select calculation: ");
@@ -21,7 +21,7 @@ namespace Calculator
             string select = Console.ReadLine();
             return select;
         }
-        public double Input(string name)
+        public double InputNumbers(string name)
         {
             double Number = 0;
             Console.WriteLine("Type a {0} number: ", name);
