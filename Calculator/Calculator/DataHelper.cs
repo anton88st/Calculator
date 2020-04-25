@@ -24,11 +24,9 @@ namespace Calculator
         }
         public double InputNumbers(string name)
         {
-            double Number = 0;
+            double Number;
             Console.WriteLine("Type a {0} number: ", name);
             string inputNumber = Console.ReadLine();
-                try
-                {
                     while (!double.TryParse(inputNumber, out Number))
                     {
                         if (inputNumber == "q")
@@ -40,11 +38,6 @@ namespace Calculator
                         inputNumber = Console.ReadLine();
                     }
                     return Number;
-                }
-                catch
-                {
-                    throw;
-                }
         }
         public void NameApplication()
         {

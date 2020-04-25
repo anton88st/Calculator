@@ -99,7 +99,7 @@ namespace Calculator
         {
             if (Number2 == 0)
             {
-                throw new Exception("The second number can't be zero. Returning to the Main Menu...");
+                throw new DivideByZeroException();
             }
             else
             {
