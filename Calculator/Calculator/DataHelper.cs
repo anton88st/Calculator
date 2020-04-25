@@ -10,6 +10,7 @@ namespace Calculator
     {
         public string OutputMenu()
         {
+            Console.Clear();
             NameApplication();
             Console.WriteLine("Select calculation: ");
             Console.WriteLine("Add numbers-------- a");
@@ -26,20 +27,28 @@ namespace Calculator
             double Number = 0;
             Console.WriteLine("Type a {0} number: ", name);
             string inputNumber = Console.ReadLine();
-            try
-            {
-                Number = Convert.ToDouble(inputNumber);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: {0}", ex.Message);
-            }
-            return Number;
+                try
+                {
+                    while (!double.TryParse(inputNumber, out Number))
+                    {
+                        if (inputNumber == "q")
+                        {
+                            throw new Exception("Returning to the Main Menu...");
+                        }
+                        Console.WriteLine("An error: The entered data is not valid!! Press enter and type a valid number.");
+                        Console.Write("Type a {0} number: ", name);
+                        inputNumber = Console.ReadLine();
+                    }
+                    return Number;
+                }
+                catch
+                {
+                    throw;
+                }
         }
         public void NameApplication()
         {
             string nameApplication = "Welcome: Console Calculator.\n";
-            Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth - nameApplication.Length) / 2, Console.CursorTop);
             Console.WriteLine(nameApplication);
         }

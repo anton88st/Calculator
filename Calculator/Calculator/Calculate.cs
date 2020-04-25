@@ -10,18 +10,28 @@ namespace Calculator
     {
         public bool MainMenu()
         {
+            bool menu = true;
             DataHelper myhelp = new DataHelper();
             string select = myhelp.OutputMenu();
             if (select == "q")
             {
+                Console.WriteLine("Closing application...");
                 return false;
             }
             else
             {
                 Console.Clear();
-                double number1 = myhelp.InputNumbers("First");
-                double number2 = myhelp.InputNumbers("Second");
-                bool menu = SelectCalculate(select, number1, number2);
+                myhelp.NameApplication();
+                try
+                {
+                    double number1 = myhelp.InputNumbers("First");
+                    double number2 = myhelp.InputNumbers("Second");
+                    menu = SelectCalculate(select, number1, number2);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 Console.ReadLine();
                 return menu;
             }
@@ -47,8 +57,6 @@ namespace Calculator
                     Divide division = new Divide { Number1 = number1, Number2 = number2 };
                     division.Calculation();
                     return true;
-                case "q":
-                    return false;
                 default:
                     return true;
             }
@@ -91,7 +99,7 @@ namespace Calculator
         {
             if (Number2 == 0)
             {
-                throw new Exception("Number2 can't be zero");
+                throw new Exception("The second number can't be zero. Returning to the Main Menu...");
             }
             else
             {
