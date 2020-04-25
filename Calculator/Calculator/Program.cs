@@ -10,29 +10,11 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            DataHelper mydata = new DataHelper();
-            double number1 = mydata.Input("First");
-            double number2 = mydata.Input("Second");
-            Console.WriteLine("Select calculation: ");
-            string select = Console.ReadLine();
-            switch (select)
+            Select myselect = new Select();
+            bool mainMenu = myselect.MainMenu();
+            while (mainMenu == true)
             {
-                case "a":
-                    Add addition = new Add { Number1 = 1, Number2 = 2 };
-                    addition.Calculation();
-                    break;
-                case "s":
-                    Subtract subtraction = new Subtract { Number1 = 1, Number2 = 2 };
-                    subtraction.Calculation();
-                    break;
-                case "m":
-                    Multiply multiplication = new Multiply { Number1 = 1, Number2 = 2 };
-                    multiplication.Calculation();
-                    break;
-                case "d":
-                    Divide division = new Divide { Number1 = 1, Number2 = 2 };
-                    division.Calculation();
-                    break;
+                mainMenu = myselect.MainMenu();
             }
             Console.ReadLine();
             return;
