@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calculator.Properties;
+
 
 namespace Calculator
 {
@@ -24,15 +26,21 @@ namespace Calculator
         }
         public double InputNumbers(string name)
         {
-            double Number;
+            double Number = 0;
             Console.WriteLine("Type a {0} number: ", name);
             string inputNumber = Console.ReadLine();
-                    while (!double.TryParse(inputNumber, out Number))
+                    
+            while (!double.TryParse(inputNumber, out Number))
                     {
                         if (inputNumber == "q")
                         {
                             throw new Exception("Returning to the Main Menu...");
                         }
+                        if (inputNumber == "s")
+                {
+                    Number = Settings.Default.SaResult;
+                    return Number;
+                }
                         Console.WriteLine("An error: The entered data is not valid!! Press enter and type a valid number.");
                         Console.Write("Type a {0} number: ", name);
                         inputNumber = Console.ReadLine();

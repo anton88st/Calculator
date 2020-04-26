@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Calculator.Properties;
 
 namespace Calculator
 {
@@ -39,6 +41,7 @@ namespace Calculator
         }
         public bool SelectCalculate(string select, double number1, double number2)
         {
+
             switch (select)
             {
                 case "a":
@@ -67,35 +70,41 @@ namespace Calculator
         public double Number1 { get; set; }
         public double Number2 { get; set; }
         public double Result { get; set; }
-        public abstract void Calculation();
+        public abstract double Calculation();
     }
     class Add : Base
     {
-        public override void Calculation()
+        public override double Calculation()
         {
             Result = Number1 + Number2;
             Console.WriteLine("Result:{0}", Result);
+            Settings.Default.SaResult = Result;
+            return Result;
         }
     }
     class Subtract : Base
     {
-        public override void Calculation()
+        public override double Calculation()
         {
             Result = Number1 - Number2;
             Console.WriteLine("Result:{0} ", Result);
+            Settings.Default.SaResult = Result;
+            return Result;
         }
     }
     class Multiply : Base
     {
-        public override void Calculation()
+        public override double Calculation()
         {
             Result = Number1 * Number2;
             Console.WriteLine("Result:{0} ", Result);
+            Settings.Default.SaResult = Result;
+            return Result;
         }
     }
     class Divide : Base
     {
-        public override void Calculation()
+        public override double Calculation()
         {
             if (Number2 == 0)
             {
@@ -105,7 +114,9 @@ namespace Calculator
             {
                 Result = Number1 / Number2;
                 Console.WriteLine("Result:{0} ", Result);
+                Settings.Default.SaResult = Result;
             }
+            return Result;
         }
     }
 }
