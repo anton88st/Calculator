@@ -44,7 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="abstract Base.cs" />
     <Compile Include="Calculate.cs" />
+    <Compile Include="Add.cs" />
+    <Compile Include="Divide.cs" />
+    <Compile Include="abstract Matrix.cs" />
+    <Compile Include="MenuMatrix.cs" />
+    <Compile Include="Multiply.cs" />
+    <Compile Include="MultiplyMatrix.cs" />
+    <Compile Include="Subtract.cs" />
     <Compile Include="DataHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,6 +20,12 @@ namespace Calculator
                 Console.WriteLine("Closing application...");
                 return false;
             }
+            if (select == "mm")
+            {
+                MenuMatrix multiplyMatrix = new MenuMatrix();
+                multiplyMatrix.MatrixMain();
+                return true;
+            }
             else
             {
                 Console.Clear();
@@ -60,63 +66,13 @@ namespace Calculator
                     Divide division = new Divide { Number1 = number1, Number2 = number2 };
                     division.Calculation();
                     return true;
+                /*case "mm":
+                    MenuMatrix multiplyMatrix = new MenuMatrix();
+                    multiplyMatrix.MatrixMain();
+                    return true;*/
                 default:
                     return true;
             }
-        }
-    }
-    abstract class Base
-    {
-        public double Number1 { get; set; }
-        public double Number2 { get; set; }
-        public double Result { get; set; }
-        public abstract double Calculation();
-    }
-    class Add : Base
-    {
-        public override double Calculation()
-        {
-            Result = Number1 + Number2;
-            Console.WriteLine("Result:{0}", Result);
-            Settings.Default.SaResult = Result;
-            return Result;
-        }
-    }
-    class Subtract : Base
-    {
-        public override double Calculation()
-        {
-            Result = Number1 - Number2;
-            Console.WriteLine("Result:{0} ", Result);
-            Settings.Default.SaResult = Result;
-            return Result;
-        }
-    }
-    class Multiply : Base
-    {
-        public override double Calculation()
-        {
-            Result = Number1 * Number2;
-            Console.WriteLine("Result:{0} ", Result);
-            Settings.Default.SaResult = Result;
-            return Result;
-        }
-    }
-    class Divide : Base
-    {
-        public override double Calculation()
-        {
-            if (Number2 == 0)
-            {
-                throw new DivideByZeroException();
-            }
-            else
-            {
-                Result = Number1 / Number2;
-                Console.WriteLine("Result:{0} ", Result);
-                Settings.Default.SaResult = Result;
-            }
-            return Result;
         }
     }
 }
