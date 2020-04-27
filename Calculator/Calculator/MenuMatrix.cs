@@ -14,28 +14,27 @@ namespace Calculator
             DataHelper mydata = new DataHelper();
             Console.Clear();
             mydata.NameApplication();
-            int[,] a = mydata.TypeMatrix("A");
-            int[,] b = mydata.TypeMatrix("B");
+            int[,] matrixA = mydata.TypeMatrix("A");
+            int[,] matrixB = mydata.TypeMatrix("B");
 
-            if (a.GetUpperBound(1) + 1 != b.GetUpperBound(0) + 1)
+            if (matrixA.GetUpperBound(1) + 1 != matrixB.GetUpperBound(0) + 1)
                 {
                     Console.WriteLine("Error: Matrix cannot be multiply. Matrix A columns not equals Matrix B rows.");
                     Console.ReadLine();
                     return;
                 }
 
-            int[,] aa = mydata.TypeElementsA(a);
-            int[,] bb = mydata.TypeElementsB(b);
+           int[,] matrixElementsA = mydata.TypeElements(matrixA, "Matrix A");
+           int[,] matrixElementsB = mydata.TypeElements(matrixB, "Matrix B");
 
             Console.WriteLine("Matrix A");
-            mydata.PrintConsole(aa);
+            mydata.PrintConsole(matrixElementsA);
             Console.WriteLine("Matrix B");
-            mydata.PrintConsole(bb);
+            mydata.PrintConsole(matrixElementsB);
 
-            MultiplyMatrix mymultiply = new MultiplyMatrix { MatrixA = a, MatrixB = b };
-            int[,] result = mymultiply.Calculation();
+            MultiplyMatrix mymultiply = new MultiplyMatrix { MatrixA = matrixA, MatrixB = matrixB };
             Console.WriteLine("Matrix C");
-            mydata.PrintConsole(result);
+            mydata.PrintConsole(mymultiply.Calculation());
             Console.ReadLine();
   
             return;

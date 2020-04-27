@@ -26,7 +26,7 @@ namespace Calculator
                 multiplyMatrix.MatrixMain();
                 return true;
             }
-            else
+            if (select == "a" || select == "m" || select == "s" || select == "d")
             {
                 Console.Clear();
                 myhelp.NameApplication();
@@ -42,6 +42,11 @@ namespace Calculator
                 }
                 Console.ReadLine();
                 return menu;
+            }
+            else
+            {
+                
+                return true;
             }
             
         }
@@ -66,10 +71,6 @@ namespace Calculator
                     Divide division = new Divide { Number1 = number1, Number2 = number2 };
                     division.Calculation();
                     return true;
-                /*case "mm":
-                    MenuMatrix multiplyMatrix = new MenuMatrix();
-                    multiplyMatrix.MatrixMain();
-                    return true;*/
                 default:
                     return true;
             }

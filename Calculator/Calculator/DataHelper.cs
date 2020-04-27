@@ -65,19 +65,19 @@ namespace Calculator
             int[,] Matrix = new int[cleanrowsMatrix, cleancolMatrix];
             return Matrix;
         }
-        public int[,] TypeElementsA(int[,] MatrixA)
+        public int[,] TypeElements(int[,] matrix, string name)
         {
             bool endMethod = false; int i; int j;
             while (!endMethod)
             {
                 try
                 {
-                    for (i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)
+                    for (i = 0; i < matrix.GetUpperBound(0) + 1; i++)
                     {
-                        for (j = 0; j < MatrixA.GetUpperBound(1) + 1; j++)
+                        for (j = 0; j < matrix.GetUpperBound(1) + 1; j++)
                         {
-                            Console.Write("MatrixA number -  [{0},{1}]: ", i, j);
-                            MatrixA[i, j] = int.Parse(Console.ReadLine());
+                            Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
+                            matrix[i, j] = int.Parse(Console.ReadLine());
                         }
                     }
                 }
@@ -88,33 +88,7 @@ namespace Calculator
                 }
                 endMethod = true;
             }
-            return MatrixA;
-        }
-        public int[,] TypeElementsB(int[,] MatrixB)
-        {
-            bool endMethod = false; int i; int j;
-
-            while (!endMethod)
-            {
-                try
-                {
-                    for (i = 0; i < MatrixB.GetUpperBound(0) + 1; i++)
-                    {
-                        for (j = 0; j < MatrixB.GetUpperBound(1) + 1; j++)
-                        {
-                            Console.Write("MatrixB number -  [{0},{1}]: ", i, j);
-                            MatrixB[i, j] = int.Parse(Console.ReadLine());
-                        }
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("Error: Input elements is not valid. All elements in matrix will change by zero");
-
-                }
-                endMethod = true;
-            }
-            return MatrixB;
+            return matrix;
         }
         public void PrintConsole(int[,] Matrix)
         {
