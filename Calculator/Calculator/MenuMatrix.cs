@@ -19,7 +19,7 @@ namespace Calculator
 
             if (matrixA.GetUpperBound(1) + 1 != matrixB.GetUpperBound(0) + 1)
                 {
-                throw new Exception("Columns number in Matrix A aren't equal rows number in Matrix B.");   
+                throw new Exception("Columns number in Matrix A should be equal by rows number in Matrix B.");   
                 }
 
            int[,] matrixElementsA = mydata.TypeElementsMatrix(matrixA, "Matrix A");

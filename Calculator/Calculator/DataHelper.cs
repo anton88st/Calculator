@@ -42,7 +42,7 @@ namespace Calculator
                         Number = Settings.Default.SaResult;
                         return Number;
                         }
-                        Console.WriteLine("The entered data is not valid!! Input only numbers.");
+                        Console.WriteLine("The entered data is not valid!! Type only numbers.");
                         Console.Write("Type a {0} number: ", name);
                         inputNumber = Console.ReadLine();
                     }
@@ -59,25 +59,25 @@ namespace Calculator
             int cleanrowsMatrix; int cleancolsMatrix;
             Console.Write("Type number of rows in matrix {0}: ", name);
             string rowsMatrix = Console.ReadLine();
-            while (!Int32.TryParse(rowsMatrix, out cleanrowsMatrix) || rowsMatrix == "0")
+            while (!Int32.TryParse(rowsMatrix, out cleanrowsMatrix) || cleanrowsMatrix <= 0 )
             {
                 if (rowsMatrix == "q")
                 {
                     throw new Exception("Returning to the Main Menu...");
                 }
-                Console.WriteLine("Entered data isn't valid. Input only positive integer numbers.");
+                Console.WriteLine("Entered data isn't valid. Type only positive integer numbers.");
                 Console.Write("Type number of rows in matrix {0}: ", name);
                 rowsMatrix = Console.ReadLine();
             }
             Console.Write("Type number of columns in matrix {0}: ", name);
             string colsMatrix = Console.ReadLine();
-            while (!Int32.TryParse(colsMatrix, out cleancolsMatrix) || colsMatrix == "0")
+            while (!Int32.TryParse(colsMatrix, out cleancolsMatrix) || cleancolsMatrix <= 0 )
             {
                 if (colsMatrix == "q")
                 {
                     throw new Exception("Returning to the Main Menu...");
                 }
-                Console.WriteLine("Entered data isn't valid. Input only positive integer numbers.");
+                Console.WriteLine("Entered data isn't valid. Type only positive integer numbers.");
                 Console.Write("Type number of columns in matrix {0}: ", name);
                 colsMatrix = Console.ReadLine();
             }
@@ -99,7 +99,7 @@ namespace Calculator
                                 {
                                     throw new Exception("Returning to the Main Menu...");
                                 }
-                                Console.WriteLine("Entered data isn't valid. Input only integer numbers.");
+                                Console.WriteLine("Entered data isn't valid. Type only integer numbers.");
                                 Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
                                 element = Console.ReadLine();
                             }
