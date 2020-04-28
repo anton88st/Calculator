@@ -14,18 +14,16 @@ namespace Calculator
             DataHelper mydata = new DataHelper();
             Console.Clear();
             mydata.NameApplication();
-            int[,] matrixA = mydata.TypeMatrix("A");
-            int[,] matrixB = mydata.TypeMatrix("B");
+            int[,] matrixA = mydata.TypeParametersMatrix("A");
+            int[,] matrixB = mydata.TypeParametersMatrix("B");
 
             if (matrixA.GetUpperBound(1) + 1 != matrixB.GetUpperBound(0) + 1)
                 {
-                    Console.WriteLine("Error: Matrix cannot be multiply. Matrix A columns not equals Matrix B rows.");
-                    Console.ReadLine();
-                    return;
+                throw new Exception("Columns number in Matrix A aren't equal rows number in Matrix B.");   
                 }
 
-           int[,] matrixElementsA = mydata.TypeElements(matrixA, "Matrix A");
-           int[,] matrixElementsB = mydata.TypeElements(matrixB, "Matrix B");
+           int[,] matrixElementsA = mydata.TypeElementsMatrix(matrixA, "Matrix A");
+           int[,] matrixElementsB = mydata.TypeElementsMatrix(matrixB, "Matrix B");
 
             Console.WriteLine("Matrix A");
             mydata.PrintConsole(matrixElementsA);

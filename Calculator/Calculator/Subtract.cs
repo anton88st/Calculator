@@ -12,7 +12,7 @@ namespace Calculator
         public override double Calculation()
         {
             Result = Number1 - Number2;
-            Console.WriteLine("Result:{0} ", Result);
+            Console.WriteLine("Result:{0}-{1}={2}", Number1, Number2, Result);
             Settings.Default.SaResult = Result;
             return Result;
         }

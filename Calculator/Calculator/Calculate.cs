@@ -22,9 +22,18 @@ namespace Calculator
             }
             if (select == "mm")
             {
-                MenuMatrix multiplyMatrix = new MenuMatrix();
-                multiplyMatrix.MatrixMain();
-                return true;
+                try
+                {
+                    MenuMatrix multiplyMatrix = new MenuMatrix();
+                    multiplyMatrix.MatrixMain();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                Console.ReadLine();
+                
             }
             if (select == "a" || select == "m" || select == "s" || select == "d")
             {
