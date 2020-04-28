@@ -42,7 +42,7 @@ namespace Calculator
                         Number = Settings.Default.SaResult;
                         return Number;
                         }
-                        Console.WriteLine("The entered data is not valid!! Press enter and type a valid numbers.");
+                        Console.WriteLine("The entered data is not valid!! Input only numbers.");
                         Console.Write("Type a {0} number: ", name);
                         inputNumber = Console.ReadLine();
                     }
@@ -65,7 +65,7 @@ namespace Calculator
                 {
                     throw new Exception("Returning to the Main Menu...");
                 }
-                Console.WriteLine("Entered data isn't valid. Press enter and input valid numbers.");
+                Console.WriteLine("Entered data isn't valid. Input only positive integer numbers.");
                 Console.Write("Type number of rows in matrix {0}: ", name);
                 rowsMatrix = Console.ReadLine();
             }
@@ -77,7 +77,7 @@ namespace Calculator
                 {
                     throw new Exception("Returning to the Main Menu...");
                 }
-                Console.WriteLine("Entered data isn't valid. Press enter and input valid numbers.");
+                Console.WriteLine("Entered data isn't valid. Input only positive integer numbers.");
                 Console.Write("Type number of columns in matrix {0}: ", name);
                 colsMatrix = Console.ReadLine();
             }
@@ -99,6 +99,7 @@ namespace Calculator
                                 {
                                     throw new Exception("Returning to the Main Menu...");
                                 }
+                                Console.WriteLine("Entered data isn't valid. Input only integer numbers.");
                                 Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
                                 element = Console.ReadLine();
                             }
