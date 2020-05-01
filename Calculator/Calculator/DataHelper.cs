@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Calculator.Properties;
-
 
 namespace Calculator
 {
@@ -25,28 +21,27 @@ namespace Calculator
             string select = Console.ReadLine();
             return select;
         }
-         public double InputNumbers(string name)
+        public double InputNumbers(string name)
         {
-            double Number = 0;
+            double Number;
             Console.Write("Type a {0} number: ", name);
             string inputNumber = Console.ReadLine();
-                    
+
             while (!double.TryParse(inputNumber, out Number))
-                    {
-                        if (inputNumber == "q")
-                        {
-                            throw new Exception("Returning to the Main Menu...");
-                        }
-                        if (inputNumber == "s")
-                        {
-                        Number = Settings.Default.SaResult;
-                        return Number;
-                        }
-                        Console.WriteLine("The entered data is not valid!! Type only numbers.");
-                        Console.Write("Type a {0} number: ", name);
-                        inputNumber = Console.ReadLine();
-                    }
+            {
+                if (inputNumber == "q")
+                {
+                    throw new Exception("Returning to the Main Menu...");
+                }
+                if (inputNumber == "s")
+                {
                     return Number;
+                }
+                Console.WriteLine("The entered data is not valid!! Type only numbers.");
+                Console.Write("Type a {0} number: ", name);
+                inputNumber = Console.ReadLine();
+            }
+            return Number;
         }
         public void NameApplication()
         {
@@ -59,7 +54,7 @@ namespace Calculator
             int cleanrowsMatrix; int cleancolsMatrix;
             Console.Write("Type number of rows in matrix {0}: ", name);
             string rowsMatrix = Console.ReadLine();
-            while (!Int32.TryParse(rowsMatrix, out cleanrowsMatrix) || cleanrowsMatrix <= 0 )
+            while (!Int32.TryParse(rowsMatrix, out cleanrowsMatrix) || cleanrowsMatrix <= 0)
             {
                 if (rowsMatrix == "q")
                 {
@@ -71,7 +66,7 @@ namespace Calculator
             }
             Console.Write("Type number of columns in matrix {0}: ", name);
             string colsMatrix = Console.ReadLine();
-            while (!Int32.TryParse(colsMatrix, out cleancolsMatrix) || cleancolsMatrix <= 0 )
+            while (!Int32.TryParse(colsMatrix, out cleancolsMatrix) || cleancolsMatrix <= 0)
             {
                 if (colsMatrix == "q")
                 {
@@ -87,25 +82,25 @@ namespace Calculator
         public int[,] TypeElementsMatrix(int[,] matrix, string name)
         {
             int i; int j; int cleanelement;
-                    for (i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            for (i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
+                    string element = Console.ReadLine();
+                    while (!Int32.TryParse(element, out cleanelement))
                     {
-                        for (j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                        if (element == "q")
                         {
-                            Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
-                            string element = Console.ReadLine(); 
-                            while (!Int32.TryParse(element, out cleanelement))
-                            {
-                                if (element == "q")
-                                {
-                                    throw new Exception("Returning to the Main Menu...");
-                                }
-                                Console.WriteLine("Entered data isn't valid. Type only integer numbers.");
-                                Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
-                                element = Console.ReadLine();
-                            }
-                        matrix[i, j] = cleanelement;
+                            throw new Exception("Returning to the Main Menu...");
                         }
+                        Console.WriteLine("Entered data isn't valid. Type only integer numbers.");
+                        Console.Write("{0} number -  [{1},{2}]: ", name, i, j);
+                        element = Console.ReadLine();
                     }
+                    matrix[i, j] = cleanelement;
+                }
+            }
             return matrix;
         }
         public void PrintConsole(int[,] Matrix)

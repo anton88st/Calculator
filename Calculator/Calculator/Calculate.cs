@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Calculator.Properties;
 
 namespace Calculator
 {
@@ -33,7 +29,7 @@ namespace Calculator
                     Console.WriteLine(ex.Message);
                 }
                 Console.ReadLine();
-                
+
             }
             if (select == "a" || select == "m" || select == "s" || select == "d")
             {
@@ -54,10 +50,10 @@ namespace Calculator
             }
             else
             {
-                
+
                 return true;
             }
-            
+
         }
         public bool SelectCalculate(string select, double number1, double number2)
         {
