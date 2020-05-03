@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Calculator
 {
-    class MultiplyMatrix : Matrix
+    class MultiplicationMatrix : MatrixOperation
     {
-        public override int[,] Calculation()
+        public override int[,] Calculate()
         {
             int[,] MatrixC = new int[MatrixA.GetUpperBound(0) + 1, MatrixB.GetUpperBound(1) + 1];
             for (int i = 0; i < MatrixA.GetUpperBound(0) + 1; i++)

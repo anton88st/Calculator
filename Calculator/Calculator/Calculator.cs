@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Calculator
 {
-    class Calculate
+    class Calculator
     {
         public bool MainMenu()
         {
             bool menu = true;
-            DataHelper myhelp = new DataHelper();
+            DataHelp myhelp = new DataHelp();
             string select = myhelp.OutputMenu();
             if (select == "q")
             {
@@ -21,7 +21,7 @@ namespace Calculator
                 try
                 {
                     MenuMatrix multiplyMatrix = new MenuMatrix();
-                    multiplyMatrix.MatrixMain();
+                    multiplyMatrix.OutputMatrixMain();
                     return true;
                 }
                 catch (Exception ex)
@@ -61,20 +61,20 @@ namespace Calculator
             switch (select)
             {
                 case "a":
-                    Add addition = new Add { Number1 = number1, Number2 = number2 };
-                    addition.Calculation();
+                    Addition myaddition = new Addition { Number1 = number1, Number2 = number2 };
+                    myaddition.Calculate();
                     return true;
                 case "s":
-                    Subtract subtraction = new Subtract { Number1 = number1, Number2 = number2 };
-                    subtraction.Calculation();
+                    Subtraction mysubtraction = new Subtraction { Number1 = number1, Number2 = number2 };
+                    mysubtraction.Calculate();
                     return true;
                 case "m":
-                    Multiply multiplication = new Multiply { Number1 = number1, Number2 = number2 };
-                    multiplication.Calculation();
+                    Multiplication mymultiplication = new Multiplication { Number1 = number1, Number2 = number2 };
+                    mymultiplication.Calculate();
                     return true;
                 case "d":
-                    Divide division = new Divide { Number1 = number1, Number2 = number2 };
-                    division.Calculation();
+                    Division mydivision = new Division { Number1 = number1, Number2 = number2 };
+                    mydivision.Calculate();
                     return true;
                 default:
                     return true;

@@ -6,7 +6,7 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Calculate myselect = new Calculate();
+            Calculator myselect = new Calculator();
             bool mainMenu = myselect.MainMenu();
             while (mainMenu == true)
             {

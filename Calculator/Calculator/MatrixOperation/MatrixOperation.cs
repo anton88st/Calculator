@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Calculator
 {
-    abstract class Matrix
+    abstract class MatrixOperation
     {
         public int[,] MatrixA { get; set; }
         public int[,] MatrixB { get; set; }
-        abstract public int[,] Calculation();
+        abstract public int[,] Calculate();
     }
 }

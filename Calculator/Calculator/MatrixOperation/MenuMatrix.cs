@@ -6,9 +6,9 @@ namespace Calculator
 {
     class MenuMatrix
     {
-        public void MatrixMain()
+        public void OutputMatrixMain()
         {
-            DataHelper mydata = new DataHelper();
+            DataHelp mydata = new DataHelp();
             Console.Clear();
             mydata.NameApplication();
             int[,] matrixA = mydata.TypeParametersMatrix("A");
@@ -27,9 +27,9 @@ namespace Calculator
             Console.WriteLine("Matrix B");
             mydata.PrintConsole(matrixElementsB);
 
-            MultiplyMatrix mymultiply = new MultiplyMatrix { MatrixA = matrixA, MatrixB = matrixB };
+            MultiplicationMatrix mymultiply = new MultiplicationMatrix { MatrixA = matrixA, MatrixB = matrixB };
             Console.WriteLine("Matrix C");
-            mydata.PrintConsole(mymultiply.Calculation());
+            mydata.PrintConsole(mymultiply.Calculate());
             Console.ReadLine();
 
             return;

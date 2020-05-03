@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Calculator
 {
-    class Divide : Base
+    class Division : MathOperations
     {
-        public override double Calculation()
+        public override double Calculate()
         {
             if (Number2 == 0)
             {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Calculator
 {
-    class DataHelper
+    class DataHelp
     {
         public string OutputMenu()
         {
