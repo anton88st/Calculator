@@ -21,7 +21,7 @@ namespace Calculator
             string select = Console.ReadLine();
             return select;
         }
-        public double InputNumbers(string name)
+        public double InputNumbers(string name, double Save)
         {
             double Number;
             Console.Write("Type a {0} number: ", name);
@@ -35,6 +35,7 @@ namespace Calculator
                 }
                 if (inputNumber == "s")
                 {
+                    Number = Save;
                     return Number;
                 }
                 Console.WriteLine("The entered data is not valid!! Type only numbers.");
