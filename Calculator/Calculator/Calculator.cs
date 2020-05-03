@@ -14,23 +14,11 @@ namespace Calculator
             string select = myhelp.OutputMenu();
             if (select == "q")
             {
-                Console.WriteLine("Closing application...");
-                return false;
+                return Close();
             }
             if (select == "mm")
             {
-                try
-                {
-                    MenuMatrix multiplyMatrix = new MenuMatrix();
-                    multiplyMatrix.OutputMatrixMain();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                Console.ReadLine();
-
+                return Enter();
             }
             if (select == "a" || select == "m" || select == "s" || select == "d")
             {
@@ -82,6 +70,26 @@ namespace Calculator
             }
             Console.ReadLine();
             return Menu;
+        }
+        private bool Enter()
+        {
+            try
+            {
+                MenuMatrix multiplyMatrix = new MenuMatrix();
+                multiplyMatrix.OutputMatrixMain();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.ReadLine();
+            return true;
+        }
+        private bool Close()
+        {
+            Console.WriteLine("Closing application...");
+            return false;
         }
     }
 }
