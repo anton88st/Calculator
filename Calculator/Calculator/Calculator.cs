@@ -8,16 +8,17 @@ namespace Calculator
     {
         DataHelp myhelp = new DataHelp();
         public static double Save { get; set; }
-        public static bool Menu { get; set; }
-        public void Main()
+        public void Start()
         {
-            while (MainMenu() == true)
+            bool endApp = true;
+            while (endApp == true)
             {
-                MainMenu();
+                endApp = SelectMainMenu();
             }
             Console.ReadLine();
         }
-        public bool MainMenu()
+        private static bool Menu { get; set; }
+        private bool SelectMainMenu()
         {
             string select = myhelp.OutputMenu();
             if (select == "q")
@@ -26,7 +27,7 @@ namespace Calculator
             }
             if (select == "mm")
             {
-                return Enter();
+                return EnterMenuMatrix();
             }
             if (select == "a" || select == "m" || select == "s" || select == "d")
             {
@@ -38,7 +39,7 @@ namespace Calculator
             }
 
         }
-        private bool SelectCalculate(string select, double number1, double number2)
+        private bool SelectCalculation(string select, double number1, double number2)
         {
             switch (select)
             {
@@ -65,21 +66,23 @@ namespace Calculator
         private bool Calculate(string select)
         {
             Console.Clear();
-            myhelp.NameApplication();
+            myhelp.EnterNameApplication();
             try
             {
                 double number1 = myhelp.InputNumbers("First", Save);
                 double number2 = myhelp.InputNumbers("Second", Save);
-                Menu = SelectCalculate(select, number1, number2);
+                Menu = SelectCalculation(select, number1, number2);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadLine();
+                return true;
             }
             Console.ReadLine();
             return Menu;
         }
-        private bool Enter()
+        private bool EnterMenuMatrix()
         {
             try
             {

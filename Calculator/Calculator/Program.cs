@@ -7,7 +7,7 @@ namespace Calculator
         static void Main()
         {
             Calculator myCalculator = new Calculator();
-            myCalculator.Main();
+            myCalculator.Start();
         }
     }
 }

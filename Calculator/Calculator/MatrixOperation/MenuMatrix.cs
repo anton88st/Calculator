@@ -10,7 +10,7 @@ namespace Calculator
         {
             DataHelp mydata = new DataHelp();
             Console.Clear();
-            mydata.NameApplication();
+            mydata.EnterNameApplication();
             int[,] matrixA = mydata.TypeParametersMatrix("A");
             int[,] matrixB = mydata.TypeParametersMatrix("B");
 

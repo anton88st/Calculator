@@ -9,7 +9,7 @@ namespace Calculator
         public string OutputMenu()
         {
             Console.Clear();
-            NameApplication();
+            EnterNameApplication();
             Console.WriteLine("Select calculation: ");
             Console.WriteLine("Add numbers-------- a");
             Console.WriteLine("Substract numbers-- s");
@@ -44,7 +44,7 @@ namespace Calculator
             }
             return Number;
         }
-        public void NameApplication()
+        public void EnterNameApplication()
         {
             string nameApplication = "Welcome: Console Calculator.\n";
             Console.SetCursorPosition((Console.WindowWidth - nameApplication.Length) / 2, Console.CursorTop);
