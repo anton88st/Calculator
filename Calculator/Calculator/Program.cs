@@ -4,16 +4,10 @@ namespace Calculator
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Calculator myselect = new Calculator();
-            bool mainMenu = myselect.MainMenu();
-            while (mainMenu == true)
-            {
-                mainMenu = myselect.MainMenu();
-            }
-            Console.ReadLine();
-            return;
+            Calculator myCalculator = new Calculator();
+            myCalculator.Main();
         }
     }
 }

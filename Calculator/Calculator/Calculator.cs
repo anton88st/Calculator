@@ -9,6 +9,14 @@ namespace Calculator
         DataHelp myhelp = new DataHelp();
         public static double Save { get; set; }
         public static bool Menu { get; set; }
+        public void Main()
+        {
+            while (MainMenu() == true)
+            {
+                MainMenu();
+            }
+            Console.ReadLine();
+        }
         public bool MainMenu()
         {
             string select = myhelp.OutputMenu();
