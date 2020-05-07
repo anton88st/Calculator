@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Calculator
 {
-    class DataHelp
+    public class DataHelp
     {
         public string OutputMenu()
         {
@@ -21,7 +21,7 @@ namespace Calculator
             string select = Console.ReadLine();
             return select;
         }
-        public double InputNumbers(string name, double Save)
+        public double InputNumber(string name, double Save)
         {
             double Number;
             Console.Write("Type a {0} number: ", name);

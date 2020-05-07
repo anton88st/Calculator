@@ -45,19 +45,23 @@ namespace Calculator
             {
                 case "a":
                     Addition myaddition = new Addition { Number1 = number1, Number2 = number2 };
-                    Save = myaddition.Calculate();
+                    myaddition.Calculate();
+                    Save = myaddition.Result;
                     return true;
                 case "s":
                     Subtraction mysubtraction = new Subtraction { Number1 = number1, Number2 = number2 };
-                    Save = mysubtraction.Calculate();
+                    mysubtraction.Calculate();
+                    Save = mysubtraction.Result;
                     return true;
                 case "m":
                     Multiplication mymultiplication = new Multiplication { Number1 = number1, Number2 = number2 };
-                    Save = mymultiplication.Calculate();
+                    mymultiplication.Calculate();
+                    Save = mymultiplication.Result;
                     return true;
                 case "d":
                     Division mydivision = new Division { Number1 = number1, Number2 = number2 };
-                    Save = mydivision.Calculate();
+                    mydivision.Calculate();
+                    Save = mydivision.Result;
                     return true;
                 default:
                     return true;
@@ -69,8 +73,8 @@ namespace Calculator
             myhelp.EnterNameApplication();
             try
             {
-                double number1 = myhelp.InputNumbers("First", Save);
-                double number2 = myhelp.InputNumbers("Second", Save);
+                double number1 = myhelp.InputNumber("First", Save);
+                double number2 = myhelp.InputNumber("Second", Save);
                 Menu = SelectCalculation(select, number1, number2);
             }
             catch (Exception ex)

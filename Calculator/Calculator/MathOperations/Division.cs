@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Calculator
 {
-    class Division : MathOperations
+    public class Division : MathOperations
     {
-        public override double Calculate()
+        public override void Calculate()
         {
             if (Number2 == 0)
             {
@@ -17,7 +17,6 @@ namespace Calculator
                 Result = Number1 / Number2;
                 Console.WriteLine("Result:{0}/{1}={2}", Number1, Number2, Result);
             }
-            return Result;
         }
     }
 }
