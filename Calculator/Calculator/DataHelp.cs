@@ -6,6 +6,7 @@ namespace Calculator
 {
     public class DataHelp
     {
+        public double Number { get; set; }
         public string OutputMenu()
         {
             Console.Clear();
@@ -21,27 +22,53 @@ namespace Calculator
             string select = Console.ReadLine();
             return select;
         }
-        public double InputNumber(string name, double Save)
+        public double InNumber(string name, double Save)
         {
-            double Number;
-            Console.Write("Type a {0} number: ", name);
-            string inputNumber = Console.ReadLine();
-
-            while (!double.TryParse(inputNumber, out Number))
+            bool endApp = false;
+            while (!endApp)
             {
-                if (inputNumber == "q")
+                string num = InputNumberConsole(name);
+                if (num == "q")
                 {
-                    throw new Exception("Returning to the Main Menu...");
+                    CompareInputNumberByExit();
                 }
-                if (inputNumber == "s")
+                if (num == "s")
                 {
-                    Number = Save;
-                    return Number;
+                    return Number = CompareInputNumberbySaveResult(Save);
                 }
-                Console.WriteLine("The entered data is not valid!! Type only numbers.");
-                Console.Write("Type a {0} number: ", name);
-                inputNumber = Console.ReadLine();
+                else
+                {
+                    try
+                    {
+                        return Number = ConvertInputNumber(num);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        endApp = false;
+                    }
+                }
             }
+            return Number;
+        }
+        public string InputNumberConsole(string name)
+        {
+            Console.Write("Type a {0} number: ", name);
+            string inputNumberConsole = Console.ReadLine();
+            return inputNumberConsole;
+        }
+        public void CompareInputNumberByExit()
+        {
+            throw new Exception("Returning to the Main Menu...");
+        }
+        public double CompareInputNumberbySaveResult(double Save)
+        {
+            Number = Save;
+            return Number;
+        }
+        public double ConvertInputNumber(string num)
+        {
+            Number = double.Parse(num);
             return Number;
         }
         public void EnterNameApplication()

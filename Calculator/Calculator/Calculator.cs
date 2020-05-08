@@ -73,8 +73,8 @@ namespace Calculator
             myhelp.EnterNameApplication();
             try
             {
-                double number1 = myhelp.InputNumber("First", Save);
-                double number2 = myhelp.InputNumber("Second", Save);
+                double number1 = myhelp.InNumber("First", Save);
+                double number2 = myhelp.InNumber("Second", Save);
                 Menu = SelectCalculation(select, number1, number2);
             }
             catch (Exception ex)
