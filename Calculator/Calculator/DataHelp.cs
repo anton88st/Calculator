@@ -7,6 +7,7 @@ namespace Calculator
     public class DataHelp
     {
         public double Number { get; set; }
+        public const string NameApp = "Welcome: Console Calculator.\n";
         public string OutputMenu()
         {
             Console.Clear();
@@ -22,12 +23,12 @@ namespace Calculator
             string select = Console.ReadLine();
             return select;
         }
-        public double InNumber(string name, double Save)
+        public double InputNumber(string name, double Save)
         {
             bool endApp = false;
             while (!endApp)
             {
-                string num = InputNumberConsole(name);
+                string num = InputNumberInConsole(name);
                 if (num == "q")
                 {
                     CompareInputNumberByExit();
@@ -51,7 +52,7 @@ namespace Calculator
             }
             return Number;
         }
-        public string InputNumberConsole(string name)
+        public virtual string InputNumberInConsole(string name)
         {
             Console.Write("Type a {0} number: ", name);
             string inputNumberConsole = Console.ReadLine();
@@ -73,9 +74,8 @@ namespace Calculator
         }
         public void EnterNameApplication()
         {
-            string nameApplication = "Welcome: Console Calculator.\n";
-            Console.SetCursorPosition((Console.WindowWidth - nameApplication.Length) / 2, Console.CursorTop);
-            Console.WriteLine(nameApplication);
+            Console.SetCursorPosition((Console.WindowWidth - NameApp.Length) / 2, Console.CursorTop);
+            Console.WriteLine(NameApp);
         }
         public int[,] TypeParametersMatrix(string name)
         {
