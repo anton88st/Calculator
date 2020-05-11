@@ -9,7 +9,7 @@ namespace Calculator.Tests
         [InlineData(-1.5)]
         [InlineData(0)]
         [InlineData(1.5)]
-        public void Addition(int value)
+        public void Add_Numbers_Result(int value)
         {
             Addition add = new Addition { Number1 = value, Number2 = value };
             add.Calculate();
@@ -19,7 +19,7 @@ namespace Calculator.Tests
         [InlineData(-1.5)]
         [InlineData(0)]
         [InlineData(1.5)]
-        public void Subtraction(int value)
+        public void Subtract_Numbers_Result(int value)
         {
             Subtraction subtract = new Subtraction { Number1 = value, Number2 = value };
             subtract.Calculate();
@@ -29,7 +29,7 @@ namespace Calculator.Tests
         [InlineData(-1.5)]
         [InlineData(0)]
         [InlineData(1.5)]
-        public void Multiplication(int value)
+        public void Multiply_Numbers_Result(int value)
         {
             Multiplication multiply = new Multiplication { Number1 = value, Number2 = value };
             multiply.Calculate();
@@ -38,7 +38,7 @@ namespace Calculator.Tests
         [Theory]
         [InlineData(-1.5)]
         [InlineData(1.5)]
-        public void Division(int value)
+        public void Divide_Numbers_Result(int value)
         {
             Division divide = new Division { Number1 = value, Number2 = value };
             divide.Calculate();

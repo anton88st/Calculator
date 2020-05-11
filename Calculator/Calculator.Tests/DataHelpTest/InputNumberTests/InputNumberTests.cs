@@ -10,7 +10,7 @@ namespace Calculator.Tests
     public class InputNumberTests
     {
         [Fact]
-        public void InputNumner_25_ConvertToDouble()
+        public void InputNumber_Firstand25_ConvertToDouble()
         {
             var mock = new Moq.Mock<DataHelp>();
             mock.Setup(obj => obj.InputNumberInConsole("First")).Returns("25");

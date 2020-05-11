@@ -13,7 +13,7 @@ namespace Calculator.Tests
         [InlineData(0)]
         [InlineData(-1.5)]
         [InlineData(1.5)]
-        public void Class(double value)
+        public void SetNumber_double_SameResult(double value)
         {
             DataHelp myData = Mock.Of<DataHelp>(a => a.Number == value);
             double Num = myData.Number;

@@ -12,7 +12,7 @@ namespace Calculator.Tests
         [InlineData("0")]
         [InlineData("-1.5")]
         [InlineData("1.5")]
-        public void ConvertNumberInputNumberTest(string value)
+        public void Convert_Number_ToDouble(string value)
         {
             DataHelp myDataHelpTest = new DataHelp();
             object theObject = myDataHelpTest.ConvertInputNumber(value);
@@ -22,13 +22,13 @@ namespace Calculator.Tests
         [InlineData("anton")]
         [InlineData(" ")]
         [InlineData("+")]
-        public void ConvertStringInputNumberTest(string value)
+        public void Convert_String_Exception(string value)
         {
             DataHelp myDataHelpTest1 = new DataHelp();
             Assert.Throws<FormatException>(() => myDataHelpTest1.ConvertInputNumber(value));
         }
         [Fact]
-        public void ConvertNullInputNumberTest()
+        public void Convert_Null_Exception()
         {
             DataHelp myDataHelpTest2 = new DataHelp();
             Assert.Throws<ArgumentNullException>(() => myDataHelpTest2.ConvertInputNumber(null));

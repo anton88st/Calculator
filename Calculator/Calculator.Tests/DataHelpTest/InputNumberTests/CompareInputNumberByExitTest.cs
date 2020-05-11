@@ -9,7 +9,7 @@ namespace Calculator.Tests.InputNumberTest
     public class CompareInputNumberByExitTest
     {
         [Fact]
-        public void CompareQInputNumberByExitTest()
+        public void Compare_q_Exit()
         {
             DataHelp myDataHelpTest = new DataHelp();
             Action act = () => myDataHelpTest.CompareInputNumberByExit();

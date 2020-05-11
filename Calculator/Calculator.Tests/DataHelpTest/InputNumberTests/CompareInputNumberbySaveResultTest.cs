@@ -12,7 +12,7 @@ namespace Calculator.Tests.InputNumberTest
         [InlineData(0)]
         [InlineData(1.5)]
         [InlineData(-1.5)]
-        public void CompareInputNumberbySaveResultNumberTest(double value)
+        public void Compare_InputNumber_SaveResult(double value)
         {
             DataHelp myDataHelpTest = new DataHelp();
             myDataHelpTest.CompareInputNumberbySaveResult(value);

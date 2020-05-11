@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Calculator
 {
-    class Calculator
+    public class Calculator
     {
         DataHelp myhelp = new DataHelp();
-        public static double Save { get; set; }
+        public double Save { get; set; }
         public void Start()
         {
             bool endApp = true;
@@ -17,7 +17,6 @@ namespace Calculator
             }
             Console.ReadLine();
         }
-        private static bool Menu { get; set; }
         private bool SelectMainMenu()
         {
             string select = myhelp.OutputMenu();
@@ -31,7 +30,8 @@ namespace Calculator
             }
             if (select == "a" || select == "m" || select == "s" || select == "d")
             {
-                return Menu = Calculate(select);
+                Calculate(select);
+                return true ;
             }
             else
             {
@@ -39,52 +39,73 @@ namespace Calculator
             }
 
         }
-        private bool SelectCalculation(string select, double number1, double number2)
+        public void MathOperations(string select)
         {
             switch (select)
             {
                 case "a":
-                    Addition myaddition = new Addition { Number1 = number1, Number2 = number2 };
-                    myaddition.Calculate();
-                    Save = myaddition.Result;
-                    return true;
+                    Add();
+                    break;
                 case "s":
-                    Subtraction mysubtraction = new Subtraction { Number1 = number1, Number2 = number2 };
-                    mysubtraction.Calculate();
-                    Save = mysubtraction.Result;
-                    return true;
+                    Subtract();
+                    break;
                 case "m":
-                    Multiplication mymultiplication = new Multiplication { Number1 = number1, Number2 = number2 };
-                    mymultiplication.Calculate();
-                    Save = mymultiplication.Result;
-                    return true;
+                    Multiply();
+                    break;
                 case "d":
-                    Division mydivision = new Division { Number1 = number1, Number2 = number2 };
-                    mydivision.Calculate();
-                    Save = mydivision.Result;
-                    return true;
+                    Divide();
+                    break;
                 default:
-                    return true;
+                    break;
             }
         }
-        private bool Calculate(string select)
+        public virtual void Add()
+        {
+            Addition myAddition = new Addition { Number1 = InputNumber1(), Number2 = InputNumber2() };
+            myAddition.Calculate();
+            Save = myAddition.Result;
+        }
+        public void Subtract()
+        {
+            Subtraction mysubtraction = new Subtraction { Number1 = InputNumber1(), Number2 = InputNumber2() };
+            mysubtraction.Calculate();
+            Save = mysubtraction.Result;
+        }
+        public void Multiply()
+        {
+            Multiplication mymultiplication = new Multiplication { Number1 = InputNumber1(), Number2 = InputNumber2() };
+            mymultiplication.Calculate();
+            Save = mymultiplication.Result;
+        }
+        public void Divide()
+        {
+            Division mydivision = new Division { Number1 = InputNumber1(), Number2 = InputNumber2() };
+            mydivision.Calculate();
+            Save = mydivision.Result;
+        }
+        public double InputNumber1()
+        {
+           double Number1 = myhelp.InputNumber("First", Save);
+            return Number1;
+        }
+        public double InputNumber2()
+        {
+            double Number2 = myhelp.InputNumber("Second", Save);
+            return Number2; 
+        }
+        private void Calculate(string select)
         {
             Console.Clear();
             myhelp.EnterNameApplication();
             try
             {
-                double number1 = myhelp.InputNumber("First", Save);
-                double number2 = myhelp.InputNumber("Second", Save);
-                Menu = SelectCalculation(select, number1, number2);
+               MathOperations(select);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.ReadLine();
-                return true;
             }
             Console.ReadLine();
-            return Menu;
         }
         private bool EnterMenuMatrix()
         {

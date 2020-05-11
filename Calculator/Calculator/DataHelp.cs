@@ -7,7 +7,7 @@ namespace Calculator
     public class DataHelp
     {
         public double Number { get; set; }
-        public const string NameApp = "Welcome: Console Calculator.\n";
+        public string NameApp = "Welcome: Console Calculator.\n";
         public string OutputMenu()
         {
             Console.Clear();
