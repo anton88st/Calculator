@@ -21,11 +21,12 @@ namespace Calculator
             Console.WriteLine("Exit--------------- q");
             Console.Write("Your choice: ");
             string select = Console.ReadLine();
-            return select;
+            return select.ToLower();
         }
         public double InputNumber(string name, double Save)
         {
             bool endApp = false;
+            
             while (!endApp)
             {
                 string num = InputNumberInConsole(name);
