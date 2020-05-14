@@ -14,13 +14,16 @@ namespace Calculator
             bool endApp = true;
             while (endApp == true)
             {
-                endApp = Calculate();
+                endApp = Calculate(InputSelect());
             }
             Console.ReadLine();
         }
-        private bool Calculate()
+        public string InputSelect()
         {
-            string select = mydatahelp.OutputMenu();
+            return mydatahelp.OutputMenu();
+        }
+        public bool Calculate(string select)
+        {
             if (select == "q")
             {
                 return Close();
@@ -85,7 +88,7 @@ namespace Calculator
             double Num2 = mydatahelp.InputNumber("Second", Save);
             Select.Number2 = Num2;
         }
-        private bool EnterMenuMatrix()
+        public virtual bool EnterMenuMatrix()
         {
             try
             {
@@ -100,7 +103,7 @@ namespace Calculator
             Console.ReadLine();
             return true;
         }
-        private bool Close()
+        public virtual bool Close()
         {
             Console.WriteLine("Closing application...");
             return false;

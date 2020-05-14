@@ -31,8 +31,6 @@ namespace Calculator
             Console.WriteLine("Matrix C");
             mydata.PrintConsole(mymultiply.Calculate());
             Console.ReadLine();
-
-            return;
         }
     }
 }

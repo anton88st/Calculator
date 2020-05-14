@@ -21,7 +21,7 @@ namespace Calculator
             Console.WriteLine("Exit--------------- q");
             Console.Write("Your choice: ");
             string select = Console.ReadLine();
-            return select.ToLower();
+            return select;
         }
         public double InputNumber(string name, double Save)
         {
@@ -108,6 +108,7 @@ namespace Calculator
             int[,] Matrix = new int[cleanrowsMatrix, cleancolsMatrix];
             return Matrix;
         }
+       
         public int[,] TypeElementsMatrix(int[,] matrix, string name)
         {
             int i; int j; int cleanelement;
