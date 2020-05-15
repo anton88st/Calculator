@@ -32,5 +32,6 @@ namespace Calculator
             mydata.PrintConsole(mymultiply.Calculate());
             Console.ReadLine();
         }
+        
     }
 }

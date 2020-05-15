@@ -8,6 +8,8 @@ namespace Calculator
     {
         public double Number { get; set; }
         public string NameApp = "Welcome: Console Calculator.\n";
+        public int CleanrowsMatrix { get; set; }
+        public int CleancolsMatrix { get; set; }
         public string OutputMenu()
         {
             Console.Clear();
@@ -26,7 +28,6 @@ namespace Calculator
         public double InputNumber(string name, double Save)
         {
             bool endApp = false;
-            
             while (!endApp)
             {
                 string num = InputNumberInConsole(name);
@@ -80,35 +81,61 @@ namespace Calculator
         }
         public int[,] TypeParametersMatrix(string name)
         {
-            int cleanrowsMatrix; int cleancolsMatrix;
-            Console.Write("Type number of rows in matrix {0}: ", name);
-            string rowsMatrix = Console.ReadLine();
-            while (!Int32.TryParse(rowsMatrix, out cleanrowsMatrix) || cleanrowsMatrix <= 0)
-            {
-                if (rowsMatrix == "q")
-                {
-                    throw new Exception("Returning to the Main Menu...");
-                }
-                Console.WriteLine("Entered data isn't valid. Type only positive integer numbers.");
-                Console.Write("Type number of rows in matrix {0}: ", name);
-                rowsMatrix = Console.ReadLine();
-            }
-            Console.Write("Type number of columns in matrix {0}: ", name);
-            string colsMatrix = Console.ReadLine();
-            while (!Int32.TryParse(colsMatrix, out cleancolsMatrix) || cleancolsMatrix <= 0)
-            {
-                if (colsMatrix == "q")
-                {
-                    throw new Exception("Returning to the Main Menu...");
-                }
-                Console.WriteLine("Entered data isn't valid. Type only positive integer numbers.");
-                Console.Write("Type number of columns in matrix {0}: ", name);
-                colsMatrix = Console.ReadLine();
-            }
-            int[,] Matrix = new int[cleanrowsMatrix, cleancolsMatrix];
+            ParametersMatrix(name);
+            int[,] Matrix = new int[CleanrowsMatrix, CleancolsMatrix];
             return Matrix;
         }
-       
+        public void ParametersMatrix(string name)
+        {
+            CleanrowsMatrix = ParameterMatrix(name, "rows");
+            CleancolsMatrix = ParameterMatrix(name, "columns");
+        }
+        public virtual int ParameterMatrix(string name, string nameParameter)
+        {
+            int parameterInt = 0;
+            bool endApp = false;
+            while (!endApp)
+            {
+                string parameterMatrix = InputConsoleParameterMatrix(name, nameParameter);
+                if (parameterMatrix == "q")
+                {
+                    CompareInputNumberByExit();
+                }
+                else
+                {
+                    try
+                    {
+                        parameterInt = ConvertParameterMatrix(parameterMatrix);
+                        CompareParameterMatrixByLessZero(parameterInt);
+                        return parameterInt = ConvertParameterMatrix(parameterMatrix);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        endApp = false;
+                    }
+                }
+            }
+            return parameterInt; 
+        }
+        public int ConvertParameterMatrix(string nameParameter)
+        {
+                int parameter = int.Parse(nameParameter);
+                return parameter;
+        }
+        public void CompareParameterMatrixByLessZero(int parameterInt)
+        {
+            if (parameterInt <= 0)
+            {
+                throw new Exception("Input number can't be less than 1");
+            }
+        }
+        public virtual string InputConsoleParameterMatrix(string nameMatrix, string nameParameter)
+        {
+            Console.Write("Type number of {1} in matrix {0}: ", nameMatrix, nameParameter);
+            string parameterMatrix = Console.ReadLine();
+            return parameterMatrix;
+        }
         public int[,] TypeElementsMatrix(int[,] matrix, string name)
         {
             int i; int j; int cleanelement;

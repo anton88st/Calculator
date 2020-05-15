@@ -39,8 +39,8 @@ namespace Calculator
                     Console.Clear();
                     mydatahelp.EnterNameApplication();
                     Select = SelectOperation(select);
-                    InputNumber1();
-                    InputNumber2();
+                    ReturnNumber1();
+                    ReturnNumber2();
                     Select.Calculate();
                     Save = Select.Result;
                 }
@@ -78,12 +78,12 @@ namespace Calculator
             }
             return selectoperation;
         }
-        public void InputNumber1()
+        public void ReturnNumber1()
         {
             double Num1 = mydatahelp.InputNumber("First", Save);
             Select.Number1 = Num1;
         }
-        public void InputNumber2()
+        public void ReturnNumber2()
         {
             double Num2 = mydatahelp.InputNumber("Second", Save);
             Select.Number2 = Num2;
