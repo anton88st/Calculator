@@ -85,12 +85,12 @@ namespace Calculator
             int[,] Matrix = new int[CleanrowsMatrix, CleancolsMatrix];
             return Matrix;
         }
-        public void ParametersMatrix(string name)
+        public virtual void ParametersMatrix(string name)
         {
             CleanrowsMatrix = ParameterMatrix(name, "rows");
             CleancolsMatrix = ParameterMatrix(name, "columns");
         }
-        public virtual int ParameterMatrix(string name, string nameParameter)
+        public int ParameterMatrix(string name, string nameParameter)
         {
             int parameterInt = 0;
             bool endApp = false;
@@ -107,7 +107,7 @@ namespace Calculator
                     {
                         parameterInt = ConvertParameterMatrix(parameterMatrix);
                         CompareParameterMatrixByLessZero(parameterInt);
-                        return parameterInt = ConvertParameterMatrix(parameterMatrix);
+                        return parameterInt; 
                     }
                     catch (Exception ex)
                     {
