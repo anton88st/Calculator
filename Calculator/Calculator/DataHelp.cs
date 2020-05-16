@@ -85,7 +85,7 @@ namespace Calculator
             int[,] Matrix = new int[CleanrowsMatrix, CleancolsMatrix];
             return Matrix;
         }
-        public virtual void ParametersMatrix(string name)
+        public void ParametersMatrix(string name)
         {
             CleanrowsMatrix = ParameterMatrix(name, "rows");
             CleancolsMatrix = ParameterMatrix(name, "columns");
